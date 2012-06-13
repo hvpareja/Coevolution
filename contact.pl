@@ -55,7 +55,7 @@ while (my $struc = $stream->next_structure) {
         print $chainid."\n";
         
         # For remaining chains
-        for (my $j=0;$j<scalar @chains;$j++){
+        for (my $j=$i+1;$j<scalar @chains;$j++){
             
             # Do not compare with it self
             if ($j eq $i){ $j++; }
