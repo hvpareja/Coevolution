@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 # contact.pl
 
 use strict;
@@ -17,8 +17,14 @@ use Bio::Structure::IO::pdb;
 
 # Pool of variables ###########################################################
 
+ my $num_args = $#ARGV + 1;
+ if ($num_args != 1) {
+  print "ERROR: Missing arguments.\nUsage: contact.pl pdbfile\n";
+  exit;
+ }
+ 
  # Input pdb file (just lines witch begin with "ATOM")
- my $input_file = "1be3_mod.pdb";
+ my $input_file = $ARGV[0];
  
  # Distance Threshold
  my $dis_threshold = 4;
