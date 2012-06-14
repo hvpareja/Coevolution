@@ -18,8 +18,18 @@ use Bio::Structure::IO::pdb;
 ###############################################################################
 
 # Pool of variables ###########################################################
+ 
+ # Distance Threshold
+ my $dis_threshold = 4;
+ 
+ # The output only shows elements where the distance is lower than D. Threshold
+ # (see above). But you can switch to 1 this boolean to show all distances:
+ my $all_distances = 0;
 
- my $num_args = $#ARGV + 1;
+###############################################################################
+ 
+# File Handling ############################################################### 
+  my $num_args = $#ARGV + 1;
  if ($num_args != 1) {
   print "ERROR: Missing arguments.\nUsage: contact.pl <pdbfile>\n";
   exit;
@@ -32,26 +42,37 @@ use Bio::Structure::IO::pdb;
     $file_str =~ s/\..*$//g;
     $file_str =~ s/^.*\///g;
  
+ # Avoid overwriting files
+ my $number = 1;
+ 
  # File for atom contacts
- my $output_detailed_file = ">detailed_".$file_str.".txt";
- print $output_detailed_file;
- open DETAILED, $output_detailed_file or die $!;
- 
+ my $output_detailed_file = "detailed_".$file_str."_".$number.".txt";
  # File for residue contacts
- my $output_contact_file = ">contact_".$file_str.".txt";
- open CONTACT, $output_contact_file or die $!;
+ my $output_contact_file = "contact_".$file_str."_".$number.".txt";
  
- # Distance Threshold
- my $dis_threshold = 4;
  
- # The output only shows elements where the distance is lower than D. Threshold
- # (see above). But you can switch to 1 this boolean to show all distances:
- my $all_distances = 0;
-
-###############################################################################
+ while (-e $output_detailed_file){
+    
+    my $number2 = $output_detailed_file;
+    $number2 =~ s/^.*_//g;
+    $number2 =~ s/\.txt$//g;   
+    
+    $number2++;
+    
+    # File for atom contacts
+    $output_detailed_file = "detailed_".$file_str."_".$number2.".txt";
+    # File for residue contacts
+    $output_contact_file = "contact_".$file_str."_".$number2.".txt";
+    
+ }
+     
+ open DETAILED, ">".$output_detailed_file or die $!;
+ open CONTACT, ">".$output_contact_file or die $!;
  
-my $stream = Bio::Structure::IO->new(-file => $input_file,
+ my $stream = Bio::Structure::IO->new(-file => $input_file,
                                       -format => 'PDB');
+
+################################################################################
 
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
@@ -126,3 +147,32 @@ while (my $struc = $stream->next_structure) {
 }
 
 close DETAILED; close CONTACT;
+
+# File Cleaning ################################################################
+
+# The Contact_1BE3_Set.txt file contain many repeted elements. For instance,
+# when different atoms from a residue (say Met1) are closed to
+# different atoms from other residues (say Leu34), we will obtain the same line
+# repeted: Met1 Leu34, Met1 Leu34). So, with the
+# following code lines we try to removed such repetitions.
+
+open (FILE, $output_contact_file) or die $!;
+my @array = <FILE>;
+close FILE;
+
+# The array is converted in a hash, giving to each element (key) the value 1
+my %hash = map {$_, 1} @array;
+# In this way the new_array doesn't contain contain duplicated elements
+my @new_array = keys %hash; 
+
+open (OUTPUT, ">".$output_contact_file) or die $!;
+# This will order the chain A residues according to the primary structure.
+print OUTPUT sort {$a cmp $b} (@new_array);   
+# A warning saying something like "Argument whatever isn't numeric" will appear.
+# Just ignore it
+close OUTPUT;
+
+print "The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n";
+exit;
+
+################################################################################
