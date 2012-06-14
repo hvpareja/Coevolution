@@ -20,18 +20,18 @@ use Bio::Structure::IO::pdb;
 # Pool of variables ###########################################################
  
  # Distance Threshold
- my $dis_threshold = 4;
+ my $dis_threshold = $ARGV[2]; if(!$ARGV[2]){ $dis_threshold = 4; }
  
  # The output only shows elements where the distance is lower than D. Threshold
  # (see above). But you can switch to 1 this boolean to show all distances:
- my $all_distances = 0;
+ my $all_distances = $ARGV[1]; if(!$ARGV[1]){ $all_distances = 0; }
 
 ###############################################################################
  
 # File Handling ############################################################### 
   my $num_args = $#ARGV + 1;
- if ($num_args != 1) {
-  print "ERROR: Missing arguments.\nUsage: contact.pl <pdbfile>\n";
+ if ($num_args < 1) {
+  print "ERROR: Missing arguments.\nUsage: contact.pl <pdbfile> [<all_distances> <dis_threshold>]\n";
   exit;
  }
  
