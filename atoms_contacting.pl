@@ -1,21 +1,28 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 # atoms_contacting.pl
 
+my $input_file = $ARGV[0];
 
 ############### CONTACTING ATOMS
 # This script gives the number of atoms interacting with each chain C (chain X, in general) residue
 
-open (FILE, "ChainC_Detailed_2bc1_Results.txt");
+open (FILE, $input_file);
 @file = <FILE>;
 close FILE;
 
-for ($i=0; $i<scalar @file; $i+=4){
-    @cadena = split (/\s+/,$file[$i]);
-    push (@residuo, $cadena[5], "\n");
-   
+# This loop stores contact residues
+for ($i=0; $i<scalar @file; $i++){
+    @cadena = split (/\t+/,$file[$i]);
+    if(!$cadena[3]){ next; }
+    my $res = $cadena[3];
+    $res =~ s/.*-//g;
+    $res =~ s/[^0-9]//g;
+    #push (@residuo, $res, "\n");
+    print $res."\n";
 }
 
-for ($i=1; $i<380; ++$i) {
+
+for ($i=1; $i<380; $i++) {
     $counter = 0;
     
     for ($j=0; $j<scalar @residuo; ++$j) {
@@ -25,6 +32,7 @@ for ($i=1; $i<380; ++$i) {
             ++$counter;
         }
     }
+    
     unless ($counter == 0) {
         print $i, "\t", $counter, "\n";
     }

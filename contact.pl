@@ -6,6 +6,7 @@ use warnings;
 use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 
+# Chapter 1
 # Description ##################################################################
 # This script reads a PDB file and calculates the distance between each atom
 # from distinct chains.
@@ -17,6 +18,7 @@ use Bio::Structure::IO::pdb;
 # A table with the contact between residues insead atoms
 ###############################################################################
 
+# Chapter 2
 # Pool of variables ###########################################################
  
  # Distance Threshold
@@ -27,7 +29,8 @@ use Bio::Structure::IO::pdb;
  my $all_distances = $ARGV[1]; if(!$ARGV[1]){ $all_distances = 0; }
 
 ###############################################################################
- 
+
+# Chapter 3
 # File Handling ############################################################### 
   my $num_args = $#ARGV + 1;
  if ($num_args < 1) {
@@ -70,15 +73,26 @@ use Bio::Structure::IO::pdb;
  open CONTACT, ">".$output_contact_file or die $!;
  
  my $stream = Bio::Structure::IO->new(-file => $input_file,
-                                      -format => 'PDB');
+                                      -format => 'PDB') or die "\nInvalid pdb file.\n";
 
 ################################################################################
+
+# Chapter 4
+#  Algorithm ###################################################################
 
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
     
     # All chains
     my @chains = $struc->get_chains;
+    
+    # Check number of chains > 1
+    if(scalar @chains <= 1){
+        
+        print "\nThis pdb file contains only one chain. No contact detected with other chains.\n";
+        exit;
+        
+    }
     
     # For each chain
     for(my $i=0;$i<scalar @chains;$i++){
@@ -88,7 +102,6 @@ while (my $struc = $stream->next_structure) {
         
         # Chain identifier
         my $chainid = $chain->id;
-        print DETAILED "Chain ".$chainid."\n";
         
         # For remaining chains
         for (my $j=$i+1;$j<scalar @chains;$j++){
@@ -146,8 +159,11 @@ while (my $struc = $stream->next_structure) {
     
 }
 
+################################################################################
+
 close DETAILED; close CONTACT;
 
+# Chapter 5
 # File Cleaning ################################################################
 
 # The Contact_1BE3_Set.txt file contain many repeted elements. For instance,
@@ -176,3 +192,4 @@ print "The work has been successfully completed \n\n See $output_contact_file an
 exit;
 
 ################################################################################
+# END
