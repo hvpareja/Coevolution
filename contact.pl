@@ -6,6 +6,9 @@ use warnings;
 use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 
+# Send email 
+#system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' -a rawtable.pl -- hvalverde\@uma.es");
+
 # Chapter 1
 # Description ##################################################################
 # This script reads a PDB file and calculates the distance between each atom
@@ -83,8 +86,16 @@ use Bio::Structure::IO::pdb;
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
     
-    # All chains
-    my @chains = $struc->get_chains;
+    # Models
+    my @models = $struc->get_models;
+    my @chains = ();
+    foreach my $model (@models){
+      
+      my @chains_model = $struc->get_chains($model);
+      # Store all chains from all models in the same array
+      push(@chains, @chains_model);
+      
+    }
     
     # Check number of chains > 1
     if(scalar @chains <= 1){
@@ -189,6 +200,11 @@ print OUTPUT sort {$a cmp $b} (@new_array);
 close OUTPUT;
 
 print "The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n";
+# Store the name of the files
+system("contact_file=$output_contact_file");
+system("detailed_file=$output_detailed_file");
+# Email when finish
+#system("echo 'The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n' | mutt -s 'Finish job' -a $output_contact_file $output_detailed_file -- hvalverde\@uma.es");
 exit;
 
 ################################################################################
