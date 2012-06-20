@@ -167,5 +167,5 @@ for(my $i=0;$i<379;$i++){
 }
 
 system("rm $temp_file");
-#system("rm dssp_temp");
+system("rm dssp_temp");
 exit;
