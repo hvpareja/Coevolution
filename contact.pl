@@ -82,7 +82,7 @@ use Bio::Structure::IO::pdb;
 #  Algorithm ###################################################################
 
 # Send email 
-system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' hvalverde\@uma.es");
+system("echo 'Starting Job' | mutt -s 'Starting job' hvalverde\@uma.es");
 
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
@@ -144,17 +144,18 @@ while (my $struc = $stream->next_structure) {
                             # Print always
                             if($all_distances){
                                 
-                                print DETAILED $chain->id."\t".$chain2->id."\t".$atom->serial()." (".$atom->id."-".$res->id.")\t".$atom2->serial()." (".$atom->id."-".$res2->id.")\t".$distance."\n";
+                                print DETAILED $chain->id."\t".$chain2->id."\t".$atom->serial()." (".$atom->id."-".$res->id.")\t".$atom2->serial()." (".$atom2->id."-".$res2->id.")\t".$distance."\n";
                                 print CONTACT $res->id."\t".$chain->id."\t".$res2->id."\t".$chain2->id."\n";
                                 
                             }else{
                                 # Print if < $dis_threshold
                                 if($distance < $dis_threshold){
                                 
-                                    print DETAILED $chain->id."\t".$chain2->id."\t".$atom->serial()." (".$atom->id."-".$res->id.")\t".$atom2->serial()." (".$atom->id."-".$res2->id.")\t".$distance."\n";
+                                    print DETAILED $chain->id."\t".$chain2->id."\t".$atom->serial()." (".$atom->id."-".$res->id.")\t".$atom2->serial()." (".$atom2->id."-".$res2->id.")\t".$distance."\n";
                                     print CONTACT $res->id."\t".$chain->id."\t".$res2->id."\t".$chain2->id."\n";
                                     
                                 }
+                                
                             }
                     
                         }
