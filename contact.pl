@@ -6,8 +6,6 @@ use warnings;
 use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 
-# Send email 
-system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' hvalverde\@uma.es");
 
 # Chapter 1
 # Description ##################################################################
@@ -82,6 +80,9 @@ system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' hvalverde\@uma.es"
 
 # Chapter 4
 #  Algorithm ###################################################################
+
+# Send email 
+system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' hvalverde\@uma.es");
 
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
