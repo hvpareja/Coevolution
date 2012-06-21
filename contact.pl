@@ -7,7 +7,7 @@ use Bio::Structure::Model;
 use Bio::Structure::IO::pdb;
 
 # Send email 
-#system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' -a rawtable.pl -- hvalverde\@uma.es");
+system("echo 'Comenzando el trabajo' | mutt -s 'Starting job' hvalverde\@uma.es");
 
 # Chapter 1
 # Description ##################################################################
@@ -204,7 +204,7 @@ print "The work has been successfully completed \n\n See $output_contact_file an
 system("contact_file=$output_contact_file");
 system("detailed_file=$output_detailed_file");
 # Email when finish
-#system("echo 'The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n' | mutt -s 'Finish job' -a $output_contact_file $output_detailed_file -- hvalverde\@uma.es");
+system("echo 'The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n' | mutt -s 'Finish job' -a $output_contact_file $output_detailed_file -- hvalverde\@uma.es");
 exit;
 
 ################################################################################
