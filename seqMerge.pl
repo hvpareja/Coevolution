@@ -13,25 +13,22 @@ use Bio::SeqIO;
 
 # Usage: ./seqMerge.pl <setFile> <AlignFile>
   my $num_args = $#ARGV + 1;
- if ($num_args < 2) {
-  print "ERROR: Missing arguments.\nUsage: ./seqMerge.pl <setFile> <AlignFile>\n";
+ if ($num_args < 1) {
+  print "ERROR: Missing arguments.\nUsage: <STDIN> | ./seqMerge.pl <AlignFile>\n";
   exit;
  }
  
 # Chapter 2
 # File handle ##################################################################
-# Input set_file
-my $set_file = $ARGV[0];
-open LIST, $set_file;
 # Extract in @list the codons within the set
-while (my $line = <LIST>) {
+while (my $line = <STDIN>) {
     $line =~ s/^..//g;
     $line =~ s/....$//g;
     $line =~ s/\n//g;
     push(@list, $line);
 }
 # Input AlignFile
-my $align_file = $ARGV[1];
+my $align_file = $ARGV[0];
 my $stream = Bio::SeqIO->new(-file => $align_file);
 ################################################################################
 
