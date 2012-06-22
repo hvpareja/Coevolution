@@ -19,16 +19,14 @@ chain=$3
 # Fasta file with aligned nucleotide sequence for this chain
 align_file=$4
 
-dsspData = $(~/coevolution/./rawtable.pl $contact_file $pdb_file $chain)
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_Contact.fa
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContact.fa
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t1\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_ContactBuried.fa
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t1\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_ContactExposed.fa
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t0\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContactBuried.fa
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain | grep -P '^.\t[0-9]*\t0\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContactExposed.fa
 
 clear
-
-echo $dsspData | grep -P '^.\t[0-9]*\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_Contact.fa
-echo $dsspData | grep -P '^.\t[0-9]*\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContact.fa
-echo $dsspData | grep -P '^.\t[0-9]*\t1\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_ContactBuried.fa
-echo $dsspData | grep -P '^.\t[0-9]*\t1\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_ContactExposed.fa
-echo $dsspData | grep -P '^.\t[0-9]*\t0\t0' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContactBuried.fa
-echo $dsspData | grep -P '^.\t[0-9]*\t0\t1' | ~/coevolution/./seqMerge.pl $align_file > mer_${chain}_NonContactExposed.fa
 
 echo "Files generated: "
 echo "mer_${chain}_Contact.fa"
