@@ -19,7 +19,16 @@ use Bio::Structure::IO::pdb;
  
  while (my $struc = $stream->next_structure) {
     
-    my @chains = $struc->get_chains();
+    # Models
+    my @models = $struc->get_models;
+    my @chains = ();
+    foreach my $model (@models){
+      
+      my @chains_model = $struc->get_chains($model);
+      # Store all chains from all models in the same array
+      push(@chains, @chains_model);
+      
+    }
     
     foreach my $chain (@chains){
         
