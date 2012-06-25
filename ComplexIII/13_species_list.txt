@@ -1,0 +1,13 @@
+1 Bos taurus
+2 Homo sapiens
+3 Pan troglodytes
+4 Macaca mulatta
+5 Pongo abelii
+6 Mus musculus
+7 Rattus norvegicus
+8 Canis familiaris
+9 Ailuropoda melanoleuca
+10 Sus scrofa
+11 Equus caballus
+12 Monodelphis domestica
+13 Ornithorhynchus anatinus

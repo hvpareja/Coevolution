@@ -1,0 +1,10 @@
+ComplexIII/Sequences/cDNA/ChainA/ChainA_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainB/ChainB_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainC/ChainC_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainD/Cytc1_ChainD.txt
+ComplexIII/Sequences/cDNA/ChainF/Subunit7_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainG/ChainG_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainH/ChainH_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainI/RISP_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainJ/ChainJ_1be3_cDNA.txt
+ComplexIII/Sequences/cDNA/ChainK/ChainK_1be3_cDNA.txt
