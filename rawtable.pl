@@ -147,22 +147,22 @@ foreach my $residueID (@residues) {
 # Chapter 4
 # Table drawing ################################################################
 print "Raw Table for $chainID.\n";
-print "ChainID\tRes num.\tContact\tExposition ($th_expo)\n";
-print "-------\t--------\t-------\t-----------------\n";
+print "ChainID\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
+print "-------\t--------\t--\t-------\t-----------------\n";
 
 
 #for(my $i=0;$i<=$chain_length;$i++){
-for(my $i=0;$i<379;$i++){   
+for(my $i=0;$i<scalar @bin_array;$i++){   
     my $no = $i+1;
     my $pdbNum = $dssp->_pdbNum( $no );
-    
+    my $aa = $dssp->resAA($pdbNum);
     
     # Check if the residue is in conctact
     my $bool_contact = grep /.{3}-$pdbNum\tC/, @contact_data;
     
     if($bool_contact){ $contact = 1}else{ $contact = 0 }
     
-    print "$chainID\t$pdbNum\t$contact\t$bin_array[$i]\n";
+    print "$chainID\t$pdbNum\t$aa\t$contact\t$bin_array[$i]\n";
     
 }
 
