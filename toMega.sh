@@ -3,7 +3,7 @@
 if [ $# -lt 4 ]; then
 	echo -e "\nERROR: Any argument is missing."
 	echo -e "Usage:"
-	echo -e "./toMega.sh <contact_file> <pdb_file> <chain> <align_file> [<Gene_code (st=standard or mt=mitochondrial>]\n"
+	echo -e "./toMega.sh <contact_file> <pdb_file> <chain> <align_file> [<Gene_code (st=standard -default- or mt=mitochondrial>]\n"
 	exit
 fi
 
