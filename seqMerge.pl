@@ -111,12 +111,37 @@ while (my $seq = $stream->next_seq) {
     
     my $merge_seq = "";
     
+    # Shift counter
+    my $shift = 0;
+    
     # For each codon in LIST
     for($codon=0;$codon < scalar @list;$codon++){
         
         my $codon_no = $list[$codon]-1;
         # (uc = upper case)
-        my $triplet = substr(uc($sequence),$codon_no*3,3);
+        
+        # Codon without gaps
+        my $codon_lenght = 3;
+        
+        # Codon with only gaps
+        my $triplet = substr(uc($sequence),$codon_no*3,($codon_lenght+$shift));
+        print $triplet."\n";
+        
+        # This loop is used to slide the codon window avoiding gaps
+        while(grep(/-/,$triplet)){
+            
+            $codon_lenght++;
+            $shift++;
+            $triplet = substr(uc($sequence),$codon_no*3,($codon_lenght+$shift));
+            
+            # Remove gaps
+            $triplet =~ s/-//g;
+            
+            print $triplet."\n";
+            
+            
+        }
+        
         
         my $triplet_ref = "";
         my $res_pdb = "";

@@ -25,7 +25,7 @@ gene_code=$5
 ~/coevolution/./rawtable.pl $contact_file $pdb_file $chain > temp_raw
 clear
 
-cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code
+#cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code
 cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > MegaDATA/mer_${chain}_Contact.fa
 cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > MegaDATA/mer_${chain}_NonContact.fa
 cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > MegaDATA/mer_${chain}_ContactBuried.fa

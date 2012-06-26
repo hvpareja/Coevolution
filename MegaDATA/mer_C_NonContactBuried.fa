@@ -1,36 +1,731 @@
+eoCGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 68.
+CGA => R (Residue in PDB: I)
+---------------------------------------------------------------------
+eoATC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 75.
+ATC => I (Residue in PDB: G)
+---------------------------------------------------------------------
+eoGCT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 84.
+GCT => A (Residue in PDB: N)
+---------------------------------------------------------------------
+eoTCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 85.
+TCA => S (Residue in PDB: G)
+---------------------------------------------------------------------
+eoTGC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 90.
+TGC => C (Residue in PDB: F)
+---------------------------------------------------------------------
+eoTAT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 92.
+TAT => Y (Residue in PDB: C)
+---------------------------------------------------------------------
+eoTAT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 100.
+TAT => Y (Residue in PDB: G)
+---------------------------------------------------------------------
+eoTAC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 104.
+TAC => Y (Residue in PDB: G)
+---------------------------------------------------------------------
+eoCCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 131.
+CCA => P (Residue in PDB: V)
+---------------------------------------------------------------------
+eoCAA
 
 ---------------------------------------------------------------------
 WARNING: Non coincidence encountered in residue number: 134.
-TGA => _ (Residue in PDB: W)
+CAA => Q (Residue in PDB: W)
 ---------------------------------------------------------------------
+eoTCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 136.
+TCA => S (Residue in PDB: Q)
+---------------------------------------------------------------------
+eoTGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 138.
+TGA => W (Residue in PDB: S)
+---------------------------------------------------------------------
+eoGTC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 142.
+GTC => V (Residue in PDB: A)
+---------------------------------------------------------------------
+eoAAT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 156.
+AAT => N (Residue in PDB: G)
+---------------------------------------------------------------------
+eoTGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 160.
+TGA => W (Residue in PDB: V)
+---------------------------------------------------------------------
+eoAAA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 169.
+AAA => K (Residue in PDB: V)
+---------------------------------------------------------------------
+eoACC
+eoCGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 174.
+CGA => R (Residue in PDB: L)
+---------------------------------------------------------------------
+eoGCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 188.
+GCA => A (Residue in PDB: I)
+---------------------------------------------------------------------
+eoCCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 205.
+CCA => P (Residue in PDB: N)
+---------------------------------------------------------------------
+eoCTA
+eoTTC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 242.
+TTC => F (Residue in PDB: V)
+---------------------------------------------------------------------
+eoTTA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 272.
+TTA => L (Residue in PDB: Y)
+---------------------------------------------------------------------
+eoGCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 274.
+GCA => A (Residue in PDB: L)
+---------------------------------------------------------------------
+eoTTA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 278.
+TTA => L (Residue in PDB: A)
+---------------------------------------------------------------------
+eoCGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 279.
+CGA => R (Residue in PDB: I)
+---------------------------------------------------------------------
+eoCTA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 289.
+CTA => L (Residue in PDB: G)
+---------------------------------------------------------------------
+eoCTA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 296.
+CTA => L (Residue in PDB: S)
+---------------------------------------------------------------------
+eoGCT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 299.
+GCT => A (Residue in PDB: I)
+---------------------------------------------------------------------
+eoATA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 313.
+ATA => M (Residue in PDB: S)
+---------------------------------------------------------------------
+eoTTC
 
 ---------------------------------------------------------------------
 WARNING: Non coincidence encountered in residue number: 314.
-ATA => I (Residue in PDB: M)
+TTC => F (Residue in PDB: M)
+---------------------------------------------------------------------
+eoTGC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 320.
+TGC => C (Residue in PDB: S)
+---------------------------------------------------------------------
+eoGCC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 324.
+GCC => A (Residue in PDB: F)
+---------------------------------------------------------------------
+eoGCA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 327.
+GCA => A (Residue in PDB: L)
+---------------------------------------------------------------------
+eoTGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 334.
+TGA => W (Residue in PDB: L)
+---------------------------------------------------------------------
+eoGGA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 337.
+GGA => G (Residue in PDB: I)
+---------------------------------------------------------------------
+eoCAA
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 338.
+CAA => Q (Residue in PDB: G)
+---------------------------------------------------------------------
+eoCTA
+eoGTG
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 361.
+GTG => V (Residue in PDB: I)
+---------------------------------------------------------------------
+eoATC
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 369.
+ATC => I (Residue in PDB: G)
 ---------------------------------------------------------------------
 >Bos
-ATCGGCAACGGATTTTGCGGCGGGGTCTGACAATCAGCAGGCGTCGTAACCCTTATCAACCTAGTATACTTAGCAATCGGATCTATTAGCATAAGCTTCCTACTCATTGGACTCATCGGC
+CGAATCGCTTCATGCTATTATTACCCACAATCATGAGTCAATTGAAAAACCCGAGCACCACTATTCTTAGCATTACGACTACTAGCTATATTCTGCGCCGCATGAGGACAACTAGTGATC
+eoATC
+eoGGC
+eoAAT
+eoGGC
+eoTTT
+eoTGC
+eoGGC
+eoGGA
+eoGTC
+eoTGA
+eoCAA
+eoTCA
+eoGCC
+eoGGG
+eoGTT
+eoGTA
+eoACC
+eoCTC
+eoATT
+eoAAC
+eoTCC
+eoTTA
+eoTGA
+eoTTC
+eoTAC
+eoACA
+eoGGA
+eoCTA
+eoCTC
+eoCAA
+eoAGC
+eoCTA
+eoCTT
+eoCTC
+eoATT
+eoTGA
+eoATC
+eoACA
+eoACA
+eoATC
 >Homo
 ATCGGCAATGGCTTTTGCGGCGGAGTCTGACAATCAGCCGGGGTTGTAACCCTCATTAACTCCTTATGATTCTACACAGGACTACTCCAAAGCCTACTTCTCATTTGAATCACAACAATC
+eoATC
+eoGGT
+eoAAC
+eoGGC
+eoTTT
+eoTGC
+eoGGT
+eoGGC
+eoGTC
+eoTGA
+eoCAA
+eoTCC
+eoGCC
+eoGGA
+eoGTC
+eoGTA
+eoACC
+eoCTT
+eoATC
+eoAAT
+eoATC
+eoTTA
+eoTGA
+eoTTT
+eoTAC
+eoACA
+eoGGA
+eoCTA
+eoCTA
+eoCAA
+eoAGC
+eoCTA
+eoCTT
+eoCTC
+eoATC
+eoTGA
+eoATC
+eoACA
+eoACA
+eoGCC
 >Pan
 ATCGGTAACGGCTTTTGCGGTGGCGTCTGACAATCCGCCGGAGTCGTAACCCTTATCAATATCTTATGATTTTACACAGGACTACTACAAAGCCTACTTCTCATCTGAATCACAACAGCC
+eoATC
+eoGGC
+eoAAT
+eoGGT
+eoTTC
+eoTGC
+eoGGC
+eoGGC
+eoGTT
+eoTGA
+eoCAA
+eoTCA
+eoGCA
+eoGGA
+eoGTC
+eoATC
+eoACT
+eoCTC
+eoATC
+eoAAC
+eoATC
+eoCTA
+eoTGA
+eoTTC
+eoTAC
+eoACA
+eoGGA
+eoCTA
+eoCTC
+eoCAA
+eoAGC
+eoCTC
+eoCTA
+eoCTC
+eoACC
+eoTGA
+eoATT
+eoATC
+eoACA
+eoGCC
 >Macaca
 ATCGGCAATGGTTTCTGCGGCGGCGTTTGACAATCAGCAGGAGTCATCACTCTCATCAACATCCTATGATTCTACACAGGACTACTCCAAAGCCTCCTACTCACCTGAATTATCACAGCC
+eoATC
+eoGGC
+eoAAC
+eoGGC
+eoTTT
+eoTGC
+eoGGC
+eoGGC
+eoGTC
+eoTGA
+eoCAA
+eoTCC
+eoGCC
+eoGGA
+eoGTC
+eoGTA
+eoACT
+eoCTA
+eoATT
+eoAAT
+eoGCC
+eoCTA
+eoTGA
+eoTTC
+eoTAC
+eoGCA
+eoGGA
+eoCTA
+eoCTA
+eoCAG
+eoAGC
+eoTTG
+eoCTA
+eoCTT
+eoATT
+eoTGA
+eoATT
+eoACT
+eoACT
+eoTCT
 >Pongo
 ATCGGCAACGGCTTTTGCGGCGGCGTCTGACAATCCGCCGGAGTCGTAACTCTAATTAATGCCCTATGATTCTACGCAGGACTACTACAGAGCTTGCTACTTATTTGAATTACTACTTCT
+eoATT
+eoGGG
+eoAAC
+eoGGA
+eoTTT
+eoTGC
+eoGGC
+eoGGA
+eoGTC
+eoTGA
+eoCAA
+eoTCA
+eoGCC
+eoGGA
+eoGTC
+eoGTA
+eoACC
+eoTTG
+eoATC
+eoAAC
+eoATT
+eoCTA
+eoTGA
+eoTTC
+eoTAC
+eoGCC
+eoGGA
+eoTTA
+eoCTA
+eoCGA
+eoAGC
+eoATC
+eoTTG
+eoATC
+eoATC
+eoTGA
+eoATT
+eoTCA
+eoATC
+eoTCA
 >Mus
 ATTGGGAACGGATTTTGCGGCGGAGTCTGACAATCAGCCGGAGTCGTAACCTTGATCAACATTCTATGATTCTACGCCGGATTACTACGAAGCATCTTGATCATCTGAATTTCAATCTCA
+eoATC
+eoGGC
+eoAAC
+eoGGC
+eoTTC
+eoTGC
+eoGGA
+eoGGA
+eoGTA
+eoTGA
+eoCAA
+eoTCA
+eoGCT
+eoGGG
+eoGTC
+eoGTA
+eoACC
+eoCTA
+eoATC
+eoAAT
+eoTTC
+eoCTA
+eoTGA
+eoTTT
+eoTAC
+eoGCT
+eoGGA
+eoTTA
+eoCTA
+eoCGC
+eoAGC
+eoATC
+eoCTT
+eoATC
+eoATC
+eoTGA
+eoATC
+eoTCA
+eoATT
+eoTCT
 >Rattus
 ATCGGCAACGGCTTCTGCGGAGGAGTATGACAATCAGCTGGGGTCGTAACCCTAATCAATTTCCTATGATTTTACGCTGGATTACTACGCAGCATCCTTATCATCTGAATCTCAATTTCT
+eoATC
+eoGGC
+eoAAT
+eoGGC
+eoTTT
+eoTGC
+eoGGC
+eoGGA
+eoGTA
+eoTGA
+eoCAA
+eoTCA
+eoGCA
+eoGGA
+eoGTA
+eoGTG
+eoACC
+eoCTA
+eoATC
+eoAAC
+eoATC
+eoCTA
+eoTGA
+eoTTT
+eoTAT
+eoGCT
+eoGGA
+eoTTC
+eoCTA
+eoCGC
+eoAGC
+eoCTT
+eoCTA
+eoCTT
+eoACT
+eoTGA
+eoATT
+eoACC
+eoATC
+eoGTT
 >Canis
 ATCGGCAATGGCTTTTGCGGCGGAGTATGACAATCAGCAGGAGTAGTGACCCTAATCAACATCCTATGATTTTATGCTGGATTCCTACGCAGCCTTCTACTTACTTGAATTACCATCGTT
+eoATT
+eoGGT
+eoAAT
+eoGGG
+eoTTT
+eoTGC
+eoGGC
+eoGGA
+eoGTA
+eoTGA
+eoCAA
+eoTCC
+eoGCA
+eoGGC
+eoGTG
+eoGTA
+eoACA
+eoCTA
+eoATC
+eoAAT
+eoGCC
+eoCTG
+eoTGG
+eoTTT
+eoTAC
+eoGCT
+eoGGA
+eoTTC
+eoCTA
+eoCGA
+eoAGC
+eoCTA
+eoTTA
+eoCTC
+eoACA
+eoTGA
+eoATT
+eoACA
+eoATT
+eoACT
 >Ailuropoda
 ATTGGTAATGGGTTTTGCGGCGGAGTATGACAATCCGCAGGCGTGGTAACACTAATCAATGCCCTGTGGTTTTACGCTGGATTCCTACGAAGCCTATTACTCACATGAATTACAATTACT
+eoATT
+eoGGA
+eoAAC
+eoGGA
+eoTTT
+eoTGC
+eoGGT
+eoGGA
+eoGTC
+eoTGA
+eoCAA
+eoTCA
+eoGCT
+eoGGA
+eoGTA
+eoGTC
+eoACC
+eoCTC
+eoATT
+eoAAC
+eoATC
+eoCTT
+eoTGA
+eoTTC
+eoTAC
+eoGCT
+eoGGT
+eoGCC
+eoCTA
+eoCGA
+eoAGC
+eoCTA
+eoCTA
+eoATA
+eoACA
+eoTGA
+eoATT
+eoCTA
+eoATC
+eoACT
 >Sus
 ATTGGAAACGGATTTTGCGGTGGAGTCTGACAATCAGCTGGAGTAGTCACCCTCATTAACATCCTTTGATTCTACGCTGGTGCCCTACGAAGCCTACTAATAACATGAATTCTAATCACT
+eoATC
+eoGGA
+eoAAC
+eoGGA
+eoTTT
+eoTGC
+eoGGC
+eoGGC
+eoGTC
+eoTGA
+eoCAA
+eoTCC
+eoGCA
+eoGGT
+eoGTC
+eoGTA
+eoACC
+eoCTT
+eoATC
+eoAAT
+eoCTC
+eoCTA
+eoTGG
+eoTTC
+eoTAC
+eoGCC
+eoGGC
+eoCTC
+eoCTG
+eoCGA
+eoAGC
+eoCTC
+eoGTA
+eoCTC
+eoACA
+eoTGA
+eoATC
+eoTCC
+eoCTA
+eoGCA
 >Equus
 ATCGGAAACGGATTTTGCGGCGGCGTCTGACAATCCGCAGGTGTCGTAACCCTTATCAATCTCCTATGGTTCTACGCCGGCCTCCTGCGAAGCCTCGTACTCACATGAATCTCCCTAGCA
+eoATT
+eoGGA
+eoAAC
+eoGGA
+eoTTT
+eoTGT
+eoGGA
+eoGGT
+eoGTA
+eoTGA
+eoCAA
+eoTCC
+eoGCT
+eoGGT
+eoGTA
+eoGTT
+eoACA
+eoTTA
+eoATC
+eoAAT
+eoATT
+eoCTA
+eoTGA
+eoTTC
+eoTAT
+eoGCA
+eoGGA
+eoGCA
+eoTTA
+eoCGA
+eoAGC
+eoATT
+eoATA
+eoTCA
+eoACC
+eoTGA
+eoATT
+eoTCA
+eoCTC
+eoGCA
 >Monodelphis
 ATTGGAAACGGATTTTGTGGAGGTGTATGACAATCCGCTGGTGTAGTTACATTAATCAATATTCTATGATTCTATGCAGGAGCATTACGAAGCATTATATCAACCTGAATTTCACTCGCA
+eoATC
+eoGGC
+eoAAT
+eoGGA
+eoTTC
+eoTGC
+eoGGC
+eoGGG
+eoGTC
+eoTGA
+eoCAA
+eoTCG
+eoGCT
+eoGGA
+eoGTA
+eoGTA
+eoACC
+eoTTA
+eoATT
+eoAAC
+eoGTT
+eoCTT
+eoTGA
+eoTTC
+eoTAT
+eoGCT
+eoGGA
+eoGCC
+eoCTT
+eoCGA
+eoGGA
+eoCTT
+eoCTC
+eoATC
+eoACA
+eoTGA
+eoATT
+eoCTC
+eoCTG
+eoACA
 >Ornithorhynchus
 ATCGGCAATGGATTCTGCGGCGGGGTCTGACAATCGGCTGGAGTAGTAACCTTAATTAACGTTCTTTGATTCTATGCTGGAGCCCTTCGAGGACTTCTCATCACATGAATTCTCCTGACA
