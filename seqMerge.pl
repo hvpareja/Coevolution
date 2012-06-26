@@ -81,7 +81,7 @@ while (my $line = <STDIN>) {
 
 # Genetic Code
 my $gen_code = $ARGV[1];
-if($gen_code eq ""){ $gen_code = 'st'; }
+if(!$gen_code){ $gen_code = 'st'; }
 if($gen_code ne 'mt' && $gen_code ne 'st'){
     
     print "\nERROR: Missing or invalid argument: '<GeneticCode> (st=standar OR mt=mitochondrial)'";
@@ -102,6 +102,13 @@ my $stream = Bio::SeqIO->new(-file => $align_file);
 my $sequence_number = 0;
 while (my $seq = $stream->next_seq) {
     
+    my $sequence = $seq->seq;
+    
+    # First sequence (Bos taurus)
+    if($sequence_number == 0){
+        $sequence =~ s/-//g;
+    }
+    
     my $merge_seq = "";
     
     # For each codon in LIST
@@ -109,7 +116,8 @@ while (my $seq = $stream->next_seq) {
         
         my $codon_no = $list[$codon]-1;
         # (uc = upper case)
-        my $triplet = substr(uc($seq->seq),$codon_no*3,3);
+        my $triplet = substr(uc($sequence),$codon_no*3,3);
+        
         my $triplet_ref = "";
         my $res_pdb = "";
         
@@ -125,10 +133,19 @@ while (my $seq = $stream->next_seq) {
             
         }
         
-        
+        # First sequence (Bos taurus)
         if($sequence_number == 0){
         
-            if($triplet_ref ne $aas[$codon]){
+            if(!$triplet_ref){
+                
+                print "\n---------------------------------------------------------------------";
+                print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
+                print $triplet." => ?? (Residue in PDB: ".$aas[$codon].")";
+                print "\n---------------------------------------------------------------------\n";
+                
+            }
+            
+            if($triplet_ref && $triplet_ref ne $aas[$codon]){
                 
                 print "\n---------------------------------------------------------------------";
                 print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
