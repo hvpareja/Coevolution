@@ -39,3 +39,16 @@ Non Contact Buried:
       43
 Non Contact Exposed: 
      226
+
+Contact: 
+      33
+Non Contact: 
+      48
+Contact Buried: 
+       0
+Contact Exposed: 
+      33
+Non Contact Buried: 
+       0
+Non Contact Exposed: 
+      48
