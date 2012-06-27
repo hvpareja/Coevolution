@@ -104,31 +104,43 @@ while (my $seq = $stream->next_seq) {
     
     my $sequence = $seq->seq;
     
-    # First sequence (Bos taurus)
-    if($sequence_number == 0){
-        $sequence =~ s/-//g;
-    }
-    
     my $merge_seq = "";
     
     # For each codon in LIST
     for($codon=0;$codon < scalar @list;$codon++){
         
         my $codon_no = $list[$codon]-1;
+        
+        my $previous_seq = substr(uc($sequence),0,($codon_no*3)+2);
+        my $shift = scalar @{[$previous_seq =~ /-/g]};
+        
         # (uc = upper case)
-        my $triplet = substr(uc($sequence),$codon_no*3,3);
+        my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
+        
+        my $no_gaps = 0;
+        
+        # While number of nucleotides < 3 (gap present)
+        while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
+            
+            $no_gaps++;    
+            $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
+            
+        }
+
+        my $coding_triplet = $triplet;
+        $coding_triplet =~ s/-//g;
         
         my $triplet_ref = "";
         my $res_pdb = "";
         
         if($gen_code eq 'mt'){
         
-            $triplet_ref = $mt_code{$triplet};
+            $triplet_ref = $mt_code{$coding_triplet};
             $res_pdb = $mt_code{$aas[$codon]}
             
         }else{
             
-            $triplet_ref = $standard_code{$triplet};
+            $triplet_ref = $standard_code{$coding_triplet};
             $res_pdb = $standard_code{$aas[$codon]}
             
         }
@@ -136,15 +148,7 @@ while (my $seq = $stream->next_seq) {
         # First sequence (Bos taurus)
         if($sequence_number == 0){
         
-            if(!$triplet_ref){
-                
-                print "\n---------------------------------------------------------------------";
-                print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
-                print $triplet." => ?? (Residue in PDB: ".$aas[$codon].")";
-                print "\n---------------------------------------------------------------------\n";
-                
-            }
-            
+            if(!$triplet_ref){ $triplet_ref = "??"; }
             if($triplet_ref && $triplet_ref ne $aas[$codon]){
                 
                 print "\n---------------------------------------------------------------------";
