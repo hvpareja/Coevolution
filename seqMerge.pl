@@ -103,31 +103,38 @@ my $sequence_number = 0;
 while (my $seq = $stream->next_seq) {
     
     my $sequence = $seq->seq;
-    
+    my $previous_seq = "";
     my $merge_seq = "";
+    my $shift = 0;
     
     # For each codon in LIST
     for($codon=0;$codon < scalar @list;$codon++){
         
-        
         # Get the codon ########################################################
         my $codon_no = $list[$codon]-1;
-        # Search for gaps to compute shift
-        my $previous_seq = substr(uc($sequence),0,($codon_no*3)+2);
-        my $shift = scalar @{[$previous_seq =~ /-/g]};
-        # (uc = upper case)
+        my $margin = 0;
+        my $previous_seq1 = substr(uc($sequence),0,($codon_no*3)+$shift);
+        my $prox_seq = "";
+        if(length($sequence) > ($codon_no*3)+$shift){
+        $prox_seq = substr(uc($sequence),($codon_no*3)+$shift,3);
+        }
+        $margin = 2;
+        my $previous_seq = substr(uc($sequence),0,($codon_no*3)+$shift+$margin);
+        $shift = scalar @{[$previous_seq =~ /-/g]};
+        if(length($sequence) <= ($codon_no*3)+$shift){  next; }
         my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
-        # While number of nucleotides < 3 (gap present)
-        my $no_gaps = 0;
+        my $no_gaps = 0;        
         while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
             $no_gaps++;    
             $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
+            if($no_gaps > 3){ last; }
         }
-        my $coding_triplet = $triplet;
-        $coding_triplet =~ s/-//g;
+        if($no_gaps > 3){ next; }
         # End: Get the codon ###################################################
         ########################################################################
         # Translate  ###########################################################
+        my $coding_triplet = $triplet;
+        $coding_triplet =~ s/-//g;
         my $triplet_ref = "";
         my $res_pdb = "";
         
@@ -153,7 +160,7 @@ while (my $seq = $stream->next_seq) {
                 
                 print "\n---------------------------------------------------------------------";
                 print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
-                print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon].")";
+                print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." -".$shift."- )";
                 print "\n---------------------------------------------------------------------\n";
                 
             }
@@ -163,7 +170,9 @@ while (my $seq = $stream->next_seq) {
         ########################################################################
         
         # Concatenate 
-        $merge_seq = $merge_seq.$triplet;
+        #$merge_seq = $merge_seq.$triplet;
+        # Concatenate Debug
+        $merge_seq = $merge_seq."|".$triplet;
         
     }
     
