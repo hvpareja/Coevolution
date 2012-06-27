@@ -109,27 +109,25 @@ while (my $seq = $stream->next_seq) {
     # For each codon in LIST
     for($codon=0;$codon < scalar @list;$codon++){
         
-        my $codon_no = $list[$codon]-1;
         
+        # Get the codon ########################################################
+        my $codon_no = $list[$codon]-1;
+        # Search for gaps to compute shift
         my $previous_seq = substr(uc($sequence),0,($codon_no*3)+2);
         my $shift = scalar @{[$previous_seq =~ /-/g]};
-        
         # (uc = upper case)
         my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
-        
-        my $no_gaps = 0;
-        
         # While number of nucleotides < 3 (gap present)
+        my $no_gaps = 0;
         while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
-            
             $no_gaps++;    
             $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
-            
         }
-
         my $coding_triplet = $triplet;
         $coding_triplet =~ s/-//g;
-        
+        # End: Get the codon ###################################################
+        ########################################################################
+        # Translate  ###########################################################
         my $triplet_ref = "";
         my $res_pdb = "";
         
@@ -144,7 +142,9 @@ while (my $seq = $stream->next_seq) {
             $res_pdb = $standard_code{$aas[$codon]}
             
         }
-        
+        # End: Translate  ######################################################
+        ########################################################################
+        # Validate with PDB ####################################################
         # First sequence (Bos taurus)
         if($sequence_number == 0){
         
@@ -159,16 +159,17 @@ while (my $seq = $stream->next_seq) {
             }
             
         }
+        # End: Validate with PDB ###############################################
+        ########################################################################
         
         # Concatenate 
         $merge_seq = $merge_seq.$triplet;
-        
-        #print "($codon, ".substr(uc($seq->seq),$codon_no*3,3).")\n";
         
     }
     
     $sequence_number++;
     
+    # Output <STDOUT>
     print ">".$seq->id."\n";
     print $merge_seq."\n";
     
