@@ -100,7 +100,10 @@ my $stream = Bio::SeqIO->new(-file => $align_file);
 
 # For each sequence
 my $sequence_number = 0;
+my $ref_sequence = "";
 while (my $seq = $stream->next_seq) {
+    
+    if($sequence_number == 0){ $ref_sequence = $seq->seq; }
     
     my $sequence = $seq->seq;
     my $previous_seq = "";
@@ -113,13 +116,13 @@ while (my $seq = $stream->next_seq) {
         # Get the codon ########################################################
         my $codon_no = $list[$codon]-1;
         my $margin = 0;
-        my $previous_seq1 = substr(uc($sequence),0,($codon_no*3)+$shift);
+        my $previous_seq1 = substr(uc($ref_sequence),0,($codon_no*3)+$shift);
         my $prox_seq = "";
-        if(length($sequence) > ($codon_no*3)+$shift){
-        $prox_seq = substr(uc($sequence),($codon_no*3)+$shift,3);
+        if(length($ref_sequence) > ($codon_no*3)+$shift){
+        $prox_seq = substr(uc($ref_sequence),($codon_no*3)+$shift,3);
         }
-        $margin = 2;
-        my $previous_seq = substr(uc($sequence),0,($codon_no*3)+$shift+$margin);
+        $margin = 2 + (scalar @{[$prox_seq =~ /-/g]});
+        my $previous_seq = substr(uc($ref_sequence),0,($codon_no*3)+$shift+$margin);
         $shift = scalar @{[$previous_seq =~ /-/g]};
         if(length($sequence) <= ($codon_no*3)+$shift){  next; }
         my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
@@ -160,7 +163,7 @@ while (my $seq = $stream->next_seq) {
                 
                 print "\n---------------------------------------------------------------------";
                 print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
-                print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." -".$shift."- )";
+                print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." - Gaps: ".$shift." - )";
                 print "\n---------------------------------------------------------------------\n";
                 
             }
@@ -172,7 +175,7 @@ while (my $seq = $stream->next_seq) {
         # Concatenate 
         #$merge_seq = $merge_seq.$triplet;
         # Concatenate Debug
-        $merge_seq = $merge_seq."|".$triplet;
+        $merge_seq = $merge_seq."| (".$codon_no.") ".$triplet." ".$triplet_ref."-".$aas[$codon];
         
     }
     
