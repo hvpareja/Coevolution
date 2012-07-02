@@ -25,4 +25,4 @@ for file in $(ls mer_H_*); do ./paml.sh $file 0; done
 for file in $(ls mer_I_*); do ./paml.sh $file 0; done
 for file in $(ls mer_J_*); do ./paml.sh $file 0; done
 for file in $(ls mer_K_*); do ./paml.sh $file 0; done
-cat K_output.txt
+cat K_result.txt
