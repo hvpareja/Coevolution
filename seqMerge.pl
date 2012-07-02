@@ -173,9 +173,9 @@ while (my $seq = $stream->next_seq) {
         ########################################################################
         
         # Concatenate 
-        #$merge_seq = $merge_seq.$triplet;
+        $merge_seq = $merge_seq.$triplet;
         # Concatenate Debug
-        $merge_seq = $merge_seq."| (".$codon_no.") ".$triplet." ".$triplet_ref."-".$aas[$codon];
+        #$merge_seq = $merge_seq."| (".$codon_no.") ".$triplet." ".$triplet_ref."-".$aas[$codon];
         
     }
     
