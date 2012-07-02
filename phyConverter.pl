@@ -57,7 +57,7 @@ sub MFAtoPHYLIP
 	for ($m = 0; $m < $count; $m++)
 	{
 		$len = 10 - length($subheader[$m]);
-		print FILE "$subheader[$m]";
+		print FILE substr($subheader[$m],0,9);
 		for ($n = 0; $n < $len; $n++)
 		{
 			print FILE " ";

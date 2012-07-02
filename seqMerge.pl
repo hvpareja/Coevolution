@@ -93,6 +93,14 @@ if($gen_code ne 'mt' && $gen_code ne 'st'){
 # Input AlignFile
 my $align_file = $ARGV[0];
 my $stream = Bio::SeqIO->new(-file => $align_file);
+my $stream2 = Bio::SeqIO->new(-file => $align_file);
+
+# Count number of sequences
+my $num_sequences = 0;
+while (my $seq2 = $stream2->next_seq) {
+    $num_sequences++;
+}
+
 ################################################################################
 
 # Chapter 3
@@ -121,7 +129,7 @@ while (my $seq = $stream->next_seq) {
         if(length($ref_sequence) > ($codon_no*3)+$shift){
         $prox_seq = substr(uc($ref_sequence),($codon_no*3)+$shift,3);
         }
-        $margin = 2 + (scalar @{[$prox_seq =~ /-/g]});
+        $margin = (scalar @{[$prox_seq =~ /-/g]});
         my $previous_seq = substr(uc($ref_sequence),0,($codon_no*3)+$shift+$margin);
         $shift = scalar @{[$previous_seq =~ /-/g]};
         if(length($sequence) <= ($codon_no*3)+$shift){  next; }
@@ -172,18 +180,27 @@ while (my $seq = $stream->next_seq) {
         # End: Validate with PDB ###############################################
         ########################################################################
         
-        # Concatenate 
+        # Concatenate
         $merge_seq = $merge_seq.$triplet;
         # Concatenate Debug
         #$merge_seq = $merge_seq."| (".$codon_no.") ".$triplet." ".$triplet_ref."-".$aas[$codon];
         
     }
     
-    $sequence_number++;
+   
     
-    # Output <STDOUT>
-    print ">".$seq->id."\n";
+    if($sequence_number == 0){
+        my $ln = scalar(@list);
+        my $ns = $num_sequences;
+        print "   ".$ns."    ".$ln."\n";
+    }
+    
+    # Output <STDOUT> (Phylip format)
+    my $seq_name = substr($seq->id,0,9);
+    print $seq_name."  ";
     print $merge_seq."\n";
+    
+    $sequence_number++;
     
 }
 
