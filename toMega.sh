@@ -28,13 +28,13 @@ mega_path=$5
 ~/coevolution/./rawtable.pl $contact_file $pdb_file $chain > temp_raw
 clear
 
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Contact.fa
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContact.fa
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactBuried.fa
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactExposed.fa
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactBuried.fa
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactExposed.fa
+cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Total.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Contact.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContact.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactBuried.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactExposed.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactBuried.phy
+cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactExposed.phy
 
 echo "Contact: "
 cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | wc -l
@@ -53,9 +53,9 @@ rm temp_raw
 
 echo "Files generated: "
 echo "${mega_path}..."
-echo "mer_${chain}_Contact.fa"
-echo "mer_${chain}_NonContact.fa"
-echo "mer_${chain}_ContactBuried.fa"
-echo "mer_${chain}_ContactExposed.fa"
-echo "mer_${chain}_NonContactBuried.fa"
-echo "mer_${chain}_NonContactExposed.fa"
+echo "mer_${chain}_Contact.phy"
+echo "mer_${chain}_NonContact.phy"
+echo "mer_${chain}_ContactBuried.phy"
+echo "mer_${chain}_ContactExposed.phy"
+echo "mer_${chain}_NonContactBuried.phy"
+echo "mer_${chain}_NonContactExposed.phy"

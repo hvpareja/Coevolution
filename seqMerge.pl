@@ -109,96 +109,122 @@ while (my $seq2 = $stream2->next_seq) {
 # For each sequence
 my $sequence_number = 0;
 my $ref_sequence = "";
+my %new_list = ();
 while (my $seq = $stream->next_seq) {
     
-    if($sequence_number == 0){ $ref_sequence = $seq->seq; }
+    
     
     my $sequence = $seq->seq;
     my $previous_seq = "";
     my $merge_seq = "";
-    my $shift = 0;
+    my $shift;
+    my $codon_no;
+    my @all_triplets = ();
     
-    # For each codon in LIST
-    for($codon=0;$codon < scalar @list;$codon++){
         
-        # Get the codon ########################################################
-        my $codon_no = $list[$codon]-1;
-        my $margin = 0;
-        my $previous_seq1 = substr(uc($ref_sequence),0,($codon_no*3)+$shift);
-        my $prox_seq = "";
-        if(length($ref_sequence) > ($codon_no*3)+$shift){
-        $prox_seq = substr(uc($ref_sequence),($codon_no*3)+$shift,3);
-        }
-        $margin = (scalar @{[$prox_seq =~ /-/g]});
-        my $previous_seq = substr(uc($ref_sequence),0,($codon_no*3)+$shift+$margin);
-        $shift = scalar @{[$previous_seq =~ /-/g]};
-        if(length($sequence) <= ($codon_no*3)+$shift){  next; }
-        my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
-        my $no_gaps = 0;        
-        while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
-            $no_gaps++;    
-            $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
-            if($no_gaps > 3){ last; }
-        }
-        if($no_gaps > 3){ next; }
-        # End: Get the codon ###################################################
-        ########################################################################
-        # Translate  ###########################################################
-        my $coding_triplet = $triplet;
-        $coding_triplet =~ s/-//g;
-        my $triplet_ref = "";
-        my $res_pdb = "";
-        
-        if($gen_code eq 'mt'){
-        
-            $triplet_ref = $mt_code{$coding_triplet};
-            $res_pdb = $mt_code{$aas[$codon]}
-            
-        }else{
-            
-            $triplet_ref = $standard_code{$coding_triplet};
-            $res_pdb = $standard_code{$aas[$codon]}
-            
-        }
-        # End: Translate  ######################################################
-        ########################################################################
-        # Validate with PDB ####################################################
-        # First sequence (Bos taurus)
+        # For each codon in LIST
         if($sequence_number == 0){
-        
-            if(!$triplet_ref){ $triplet_ref = "??"; }
-            if($triplet_ref && $triplet_ref ne $aas[$codon]){
+            for($codon=0;$codon < scalar @list;$codon++){
+                my $codon_no = $list[$codon]-1;
+                my $shift = 0;
+                my $previous_seq = substr(uc($sequence),0,($codon_no*3));
+                while (scalar @{[$previous_seq =~ /-/g]} > $shift){
+                    $shift++;
+                    $previous_seq = substr(uc($sequence),0,($codon_no*3)+$shift);
+                }
                 
-                print "\n---------------------------------------------------------------------";
-                print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
-                print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." - Gaps: ".$shift." - )";
-                print "\n---------------------------------------------------------------------\n";
+                my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
+                my $no_gaps = 0;        
+                while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
+                    $no_gaps++;    
+                    $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
+                }
+                push(@all_triplets, $triplet);
+                # New list for the following sequences
+                #print $codon_no."-".$shift." | ";
+                my $key = $codon_no;
+                $new_list{$key} = $no_gaps;
+                
+                # Translate  ###########################################################
+                my $coding_triplet = $triplet;
+                $coding_triplet =~ s/-//g;
+                my $triplet_ref = "";
+                my $res_pdb = "";
+                
+                if($gen_code eq 'mt'){
+        
+                    $triplet_ref = $mt_code{$coding_triplet};
+                    $res_pdb = $mt_code{$aas[$codon]}
+                    
+                }else{
+                    
+                    $triplet_ref = $standard_code{$coding_triplet};
+                    $res_pdb = $standard_code{$aas[$codon]}
+                    
+                }
+                # End: Translate  ######################################################
+                ########################################################################
+                # Validate with PDB ####################################################
+                # First sequence (Bos taurus)
+                
+                    if(!$triplet_ref){ $triplet_ref = "??"; }
+                    if($triplet_ref && $triplet_ref ne $aas[$codon]){
+                        
+                        print "\n---------------------------------------------------------------------";
+                        print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
+                        print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." - Gaps: ".$shift." - )";
+                        print "\n---------------------------------------------------------------------\n";
+                
+                # End: Validate with PDB ###############################################
+                ########################################################################
+                }
+            }
+        }else{
+            # For each codon in LIST
+            my $before_gaps = 0;
+            for $codon_new (sort {$a <=> $b} keys %new_list){
+                #print $codon_new." ".$new_list{"$codon_new"}." | ";
+                if(length($sequence) > $codon_new*3){
+                    my $triplet = substr(uc($sequence),$codon_new*3+$before_gaps,3+$new_list{$codon_new});
+                    $before_gaps = $before_gaps+$new_list{$codon_new};
+                    push(@all_triplets, $triplet);
+                }else{
+                    push(@all_triplets, "---");
+                }
                 
             }
-            
         }
-        # End: Validate with PDB ###############################################
-        ########################################################################
-        
+    
+    for my $triplet (@all_triplets){
+          
         # Concatenate
         $merge_seq = $merge_seq.$triplet;
-        # Concatenate Debug
-        #$merge_seq = $merge_seq."| (".$codon_no.") ".$triplet." ".$triplet_ref."-".$aas[$codon];
+        #$merge_seq = $merge_seq.$triplet." | ";
         
     }
     
-   
-    
-    if($sequence_number == 0){
-        my $ln = scalar(@list);
-        my $ns = $num_sequences;
-        print "   ".$ns."    ".$ln."\n";
-    }
-    
-    # Output <STDOUT> (Phylip format)
     my $seq_name = substr($seq->id,0,9);
-    print $seq_name."  ";
-    print $merge_seq."\n";
+    my $format = "phy";
+    if($format eq "phy"){
+    
+        # Output <STDOUT> (Phylip format)
+        if($sequence_number == 0){
+            my $ln = scalar(@list);
+            $ln = $ln*3;
+            my $ns = $num_sequences;
+            print "   ".$ns."    ".$ln."\n";
+        }
+        my $spaces = "";
+        while(length($seq_name.$spaces) < 10){
+            $spaces = $spaces." ";
+        }
+        print $seq_name." ".$spaces;
+        print $merge_seq."\n";
+    }else{
+        # Output <STDOUT> (Fasta format)
+        print ">".$seq_name." \n";
+        print $merge_seq."\n";
+    }
     
     $sequence_number++;
     
