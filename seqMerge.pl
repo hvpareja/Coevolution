@@ -128,6 +128,7 @@ while (my $seq = $stream->next_seq) {
     my $shift;
     my $codon_no;
     my @all_triplets = ();
+    my $eliminated_codons = 0;
     
         
         # For each codon in LIST
@@ -147,10 +148,14 @@ while (my $seq = $stream->next_seq) {
                     $no_gaps++;    
                     $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
                 }
-                push(@all_triplets, $triplet);
-                # New list for the following sequences
-                #print $codon_no."-".$shift." | ";
-                push(@new_list, $codon_no."-".$shift."-".$no_gaps);
+                if(length($triplet) == 3){
+                    push(@all_triplets, $triplet);
+                    push(@new_list, $codon_no."-".$shift."-".$no_gaps);
+                }else{
+                    
+                    $eliminated_codons++;
+                    
+                }
                 
                 # Translate  ###########################################################
                 my $coding_triplet = $triplet;
@@ -220,7 +225,7 @@ while (my $seq = $stream->next_seq) {
         # Output <STDOUT> (Phylip format)
         if($sequence_number == 0){
             my $ln = scalar(@list);
-            $ln = $ln*3;
+            $ln = $ln*3-$eliminated_codons*3;
             my $ns = $num_sequences;
             print "   ".$ns."    ".$ln."\n";
         }
