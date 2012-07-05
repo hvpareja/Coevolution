@@ -44,5 +44,6 @@ for my $b (@SE){
     
 }
 
-print ">$fileName K: \n";
-print "$k +- $desv\n";
+$fileName =~ s/^mer_\w+_//g;
+$fileName =~ s/.phy$//g;
+print "$k\t$desv\t$fileName\n";
