@@ -79,6 +79,14 @@ while (my $line = <STDIN>) {
     
 }
 
+@list = sort {$a <=> $b} @list;
+
+for my $item (@list){
+    
+    #print $item."\n";
+    
+}
+
 # Genetic Code
 my $gen_code = $ARGV[1];
 if(!$gen_code){ $gen_code = 'st'; }
@@ -109,7 +117,7 @@ while (my $seq2 = $stream2->next_seq) {
 # For each sequence
 my $sequence_number = 0;
 my $ref_sequence = "";
-my %new_list = ();
+my @new_list = ();
 while (my $seq = $stream->next_seq) {
     
     
@@ -142,8 +150,7 @@ while (my $seq = $stream->next_seq) {
                 push(@all_triplets, $triplet);
                 # New list for the following sequences
                 #print $codon_no."-".$shift." | ";
-                my $key = $codon_no;
-                $new_list{$key} = $no_gaps;
+                push(@new_list, $codon_no."-".$shift."-".$no_gaps);
                 
                 # Translate  ###########################################################
                 my $coding_triplet = $triplet;
@@ -181,12 +188,15 @@ while (my $seq = $stream->next_seq) {
             }
         }else{
             # For each codon in LIST
-            my $before_gaps = 0;
-            for $codon_new (sort {$a <=> $b} keys %new_list){
-                #print $codon_new." ".$new_list{"$codon_new"}." | ";
-                if(length($sequence) > $codon_new*3){
-                    my $triplet = substr(uc($sequence),$codon_new*3+$before_gaps,3+$new_list{$codon_new});
-                    $before_gaps = $before_gaps+$new_list{$codon_new};
+            for $codon_new (@new_list){
+                
+                my @splited = split(/-/,$codon_new);
+                my $codon = $splited[0];
+                my $shift = $splited[1];
+                my $no_gaps = $splited[2];
+                #print $codon_new." ".$no_gaps." | ";
+                if(length($sequence) > $codon*3){
+                    my $triplet = substr(uc($sequence),$codon*3+$shift,3+$no_gaps);
                     push(@all_triplets, $triplet);
                 }else{
                     push(@all_triplets, "---");
@@ -198,8 +208,8 @@ while (my $seq = $stream->next_seq) {
     for my $triplet (@all_triplets){
           
         # Concatenate
+        #$merge_seq = $merge_seq.$triplet;
         $merge_seq = $merge_seq.$triplet;
-        #$merge_seq = $merge_seq.$triplet." | ";
         
     }
     
@@ -218,11 +228,13 @@ while (my $seq = $stream->next_seq) {
         while(length($seq_name.$spaces) < 10){
             $spaces = $spaces." ";
         }
-        print $seq_name." ".$spaces;
+        print $seq_name."  ".$spaces;
+        #$merge_seq =~ s/-//g;
         print $merge_seq."\n";
     }else{
         # Output <STDOUT> (Fasta format)
         print ">".$seq_name." \n";
+        #$merge_seq =~ s/-//g;
         print $merge_seq."\n";
     }
     
