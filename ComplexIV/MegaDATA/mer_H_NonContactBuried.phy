@@ -1,23 +1,23 @@
-   22    0
-Bos         
-Sus         
-Equus       
-Ailuropod   
-Canis       
-Macaca      
-Pan         
-Nomascus    
-Pongo       
-Oryctolag   
-Cavia       
-Rattus      
-Mus         
-Miniopter   
-Tarsius     
-Macaca_2    
-Macaca_3    
-Callithri   
-Cricetulu   
-Monodelph   
-Loxodonta   
-Homo        
+   22    18
+Bos         CTGCACTGTGTGTACGTG
+Sus         CTGCACTGCGTGTACGTG
+Equus       CTGCACTGCGTGTACGTG
+Ailuropod   CTGCACTGTGTGTACGTG
+Canis       CTGCACTGCGTGTACGTG
+Macaca      CTGCACTGCGTGTACGTC
+Pan         CTGCACTGCGTGTACGTC
+Nomascus    CTGCACTGTGTGTACGTC
+Pongo       CTGCACTGCGTGTACGTC
+Oryctolag   CTGCACTGCGTGTACGTC
+Cavia       CTGCACTGCGTGTACGTC
+Rattus      CTGCACTGTGTGTACGTC
+Mus         CTGCACTGTGTGTACGTC
+Miniopter   CTGCACTGCGTGTACGTG
+Tarsius     CTACACTGTGTGTACGTC
+Macaca_2    CTGCACTGCGTGTACGTC
+Macaca_3    CTGCACTGCGTGTACGTC
+Callithri   CTGCACTGCGTATACGTC
+Cricetulu   TTGCACTGTGTGTACGTT
+Monodelph   CTGCACTGCGTCTACGTC
+Loxodonta   CTGCACTGTGTGTACGTG
+Homo        CTGCACTGCGTGTACGTC

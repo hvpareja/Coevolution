@@ -3,12 +3,12 @@
 ---------------------------------
 k	SE	Category
 ----	----	-----------------
-24.0531	8.4561	Contact
+17.4417	7.0093	Contact
 0	nan	ContactBuried
-24.0531	8.4561	ContactExposed
-16.3046	11.8021	NonContact
+17.4417	7.0093	ContactExposed
+33.9839	16.9157	NonContact
 0	nan	NonContactBuried
-16.3046	11.8021	NonContactExposed
+33.9839	16.9157	NonContactExposed
 21.3789	6.6219	Total
 ---------------------------------
 
