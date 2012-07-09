@@ -1,19 +1,4 @@
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 49.
----A => ?? (Residue in PDB: K - Gaps: 2 - )
----------------------------------------------------------------------
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 50.
---CT => ?? (Residue in PDB: L - Gaps: 5 - )
----------------------------------------------------------------------
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 54.
---AT => ?? (Residue in PDB: I - Gaps: 9 - )
----------------------------------------------------------------------
-   16    90
+  16    90
 Subuni9_B   TTGTACTTTCGCAGGACCTCTACCTTCGCCCTCATCGTCGGCGCCCTGTTCGAGTTCGATGCAGACTACGAAATCAACTGGAAGAAGTAT
 Subunit9_   TTGTACTTCCGCAGGACCTCCACCTTCGCCCTCATCATCGGCGTCATGTTCGAGTTCGATGCGGACTACGACATCAACTGCTTGCCGCCT
 Subunit9_   TTGTACTTCCGCAGGACCTCCACCTTCGCCCTCATCATCGGCGTCATGTTCGAGTTCGATGCGGACTACGACATCAACTGCTTGCCGCCT

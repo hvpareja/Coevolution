@@ -1,0 +1,15 @@
+---------------------------------
+	   Chain H
+---------------------------------
+k	SE	Category
+----	----	-----------------
+1.8364	1.7932	Contact
+0	nan	ContactBuried
+1.8364	1.7932	ContactExposed
+7.8135	3.1381	NonContact
+0	nan	NonContactBuried
+8.6718	3.4939	NonContactExposed
+5.9282	2.2178	Total
+---------------------------------
+
+

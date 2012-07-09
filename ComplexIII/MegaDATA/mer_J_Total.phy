@@ -1,24 +1,4 @@
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 49.
----A => ?? (Residue in PDB: K - Gaps: 2 - )
----------------------------------------------------------------------
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 50.
---CT => ?? (Residue in PDB: L - Gaps: 5 - )
----------------------------------------------------------------------
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 53.
-CA-- => ?? (Residue in PDB: H - Gaps: 7 - )
----------------------------------------------------------------------
-
----------------------------------------------------------------------
-WARNING: Non coincidence encountered in residue number: 54.
---AT => ?? (Residue in PDB: I - Gaps: 9 - )
----------------------------------------------------------------------
-   16    168
+  16    168
 Subuni9_B   GCCCCAACGTTGACTGCGTTGTACTCCTTGCTGTTTCGCAGGACCTCTACCTTCGCCCTCACCATCGTCGTGGGCGCCCTGTTCTTCGAGCGCGCCTTCGATCAAGGCGCAGACGCCATCTACGAACACATCAACGAGGGGTGGAAGAAGCACAAGTATGAGAACAAG
 Subunit9_   GCCGCGACGTTGACTTCGTTGTACTCCCTGCTGTTCCGCAGGACCTCCACCTTCGCCCTCACCATCATCGTGGGCGTCATGTTCTTCGAGCGCGCCTTCGATCAAGGCGCGGACGCTATCTACGACCACATCAACGAGGGGTGCCATTTGGACCCGCCTGA-------
 Subunit9_   GCCGCGACGTTGACTTCGTTGTACTCCCTGCTGTTCCGCAGGACCTCCACCTTCGCCCTCACCATCATCGTGGGCGTCATGTTCTTCGAGCGCGCCTTCGATCAAGGCGCGGACGCTATCTACGACCACATCAACGAGGGGTGCCATTTGGACCCGCCTGA-------
