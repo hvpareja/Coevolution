@@ -1,14 +1,19 @@
-   13    6
-Subunit10   GGCGCT
-Subunit10   GGCGCT
-Subunit10   GGCGCT
-Subunit10   GGCTCT
-Subunit10   GGCGCC
-Subunit10   GGCACT
-Subunit10   GGCACT
-Subunit10   GGTGCC
-Subunit10   GGCACC
-Subunit10   GGTGCT
-Subunit10   GGCGCC
-Subunit10   GGTGCT
-Subunit10   GGTGCT
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 33.
+TGG => W (Residue in PDB: S - Gaps: 0 - )
+---------------------------------------------------------------------
+   13    27
+Subunit10   ACGCTGTGGGCTGTGGTGGGGTGGGCC
+Subunit10   ACGACATGGGCTGTGGTGGGGTGGGCC
+Subunit10   ACGACATGGGCTGTGGTGGGGTGGGCC
+Subunit10   ACGACGTGGTCTGTGGTGGGGTGGGCC
+Subunit10   ACGACGTGGGCCATGGTGGGGTGGGCC
+Subunit10   ACAATGTGGACTGTGGTGGGATGGGCC
+Subunit10   ACAATGTGGACTGTGGTGGGATGGGTC
+Subunit10   ACAATGTGGGCCGTGGTGGGGTGGGCC
+Subunit10   ACAATGTGGACCGTGGTGGGGTGGGCC
+Subunit10   ACGATGTGGGCTGTGGTGGGGTGGGCC
+Subunit10   ACGATGTGGGCCGTGGTGGGGTGGGCC
+Subunit10   ACAACATGGGCTGTTGTGGGGTGGGCC
+Subunit10   ACTACCTGGGCTGTTGTGGGATGGGCT

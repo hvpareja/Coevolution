@@ -1,4 +1,14 @@
-  13    66
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 21.
+AGC => S (Residue in PDB: Q - Gaps: 0 - )
+---------------------------------------------------------------------
+
+---------------------------------------------------------------------
+WARNING: Non coincidence encountered in residue number: 33.
+TGG => W (Residue in PDB: S - Gaps: 0 - )
+---------------------------------------------------------------------
+   13    66
 Subunit10   AGAAACTGGGTCCCCACGGCGAGCCTGTGGGGCGCTGTGGGTGCCGTGGGGCTGGTATGGGCCACT
 Subunit10   AAGAACTGGGTCCCGACGGCCTACACATGGGGCGCTGTGGGCGCCGTGGGGCTGGTGTGGGCCACC
 Subunit10   AAGAACTGGGTCCCGACGGCCTACACATGGGGCGCTGTGGGCGCCGTGGGGCTGGTGTGGGCCACC

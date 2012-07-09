@@ -158,7 +158,7 @@ for(my $i=0;$i<scalar @bin_array;$i++){
     my $aa = $dssp->resAA($pdbNum);
     
     # Check if the residue is in conctact
-    my $bool_contact = grep /.{3}-$pdbNum\tC/, @contact_data;
+    my $bool_contact = grep /.{3}-$pdbNum\t$chainID/, @contact_data;
     
     if($bool_contact){ $contact = 1}else{ $contact = 0 }
     
