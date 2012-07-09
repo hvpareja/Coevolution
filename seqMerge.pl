@@ -147,6 +147,7 @@ while (my $seq = $stream->next_seq) {
                 while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
                     $no_gaps++;    
                     $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
+                    if(grep(m/([^A-Z])|([^-])/g,$triplet)){ last; }
                 }
                 if(length($triplet) == 3){
                     push(@all_triplets, $triplet);
