@@ -1,18 +1,18 @@
-   17    0
-Core2_Bos   
-Core2_Hom   
-Core2_Pan   
-Core2_Mac   
-Core2_Mus   
-Core2_Rat   
-Core2_Can   
-Core2_Ail   
-Core2_Sus   
-Core2_Equ   
-Core2_Mon   
-Core2_Orn   
-Pongo       
-Cavia       
-Loxodonta   
-Nomascus    
-Callithri   
+   17    3
+Core2_Bos   TGC
+Core2_Hom   TGC
+Core2_Pan   TGC
+Core2_Mac   TGC
+Core2_Mus   GGC
+Core2_Rat   GGC
+Core2_Can   TGC
+Core2_Ail   TGC
+Core2_Sus   TGT
+Core2_Equ   TGC
+Core2_Mon   TGC
+Core2_Orn   TGC
+Pongo       TGC
+Cavia       TGC
+Loxodonta   TGC
+Nomascus    TGC
+Callithri   TGC

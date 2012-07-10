@@ -1,15 +1,15 @@
-   14    0
-Cytc1_Bos   
-Cytc1_Hom   
-Cytc1_Pan   
-Cytc1_Pon   
-Cytc1_Mac   
-Cytc1_Mus   
-Cytc1_Can   
-Cytc1_Sus   
-Cytc1_Mon   
-gi|298910   
-gi|301773   
-gi|338728   
-gi|332264   
-gi|344307   
+   14    9
+Cytc1_Bos   CTGGTGGAT
+Cytc1_Hom   TTGGTGGAT
+Cytc1_Pan   TTGGTGGAT
+Cytc1_Pon   TTGGTGGAT
+Cytc1_Mac   TTGGTGGAC
+Cytc1_Mus   TTGGTGGAT
+Cytc1_Can   CTGGTGGAC
+Cytc1_Sus   CTGGTGGAC
+Cytc1_Mon   TTGCTGGAC
+gi|298910   TTGGTGGAT
+gi|301773   CTGGTGGAT
+gi|338728   CTGGTGGAT
+gi|332264   TTGGTGGAT
+gi|344307   TTGGTCGAC

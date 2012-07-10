@@ -5,10 +5,22 @@
 use warnings;
 use Bio::SeqIO;
 
-# Chapter 1
+# Chapter 0
 # Description ##################################################################
-# This script returns to STDOUT a set of sequences in align fasta format. Each
+# This script returns to STDOUT a set of sequences aligned. Each
 # one is the result of the concatenated codons speficied in <setFile>
+################################################################################
+# Debuggin
+# Turn this variable to 1 to print WARNINGS if any codon translation is wrong.
+my $warning = 0;
+################################################################################
+################################################################################
+
+# Chapter 1
+# Input validation #############################################################
+# Usage information. If any argument is missing, the program will exit.
+# <STDIN> must contain the table from ./rawtable.pl script. This one contains
+# the data about the contact and non contact residues.
 ################################################################################
 
 # Usage: <STDIN> ./seqMerge.pl <AlignFile> [<GeneticCode>]
@@ -18,9 +30,23 @@ use Bio::SeqIO;
   exit;
  }
  
-# Debuggin
-my $warning = 0;
- 
+ # Genetic Code validation
+my $gen_code = $ARGV[1];
+if(!$gen_code){ $gen_code = 'st'; }
+if($gen_code ne 'mt' && $gen_code ne 'st'){
+    
+    print "\nERROR: Missing or invalid argument: '<GeneticCode> (st=standar OR mt=mitochondrial)'";
+    print "\nUsage: <STDIN> | ./seqMerge.pl <AlignFile> [<GeneticCode (st=standar OR mt=mitochondrial)>]\n";
+  exit;
+    
+}
+################################################################################
+################################################################################
+
+# Chapter 2
+# Auxiliary data   #############################################################
+# Genetic codes
+################################################################################
 # Three to one letter translation
 my %mt_code =  (
     'TCA' => 'S',           'TCC' => 'S',    'TCG' => 'S',        'TCT' => 'S',
@@ -59,17 +85,20 @@ my %standard_code =  (
     'GAC' => 'D',           'GAT' => 'D',    'GAA' => 'E',        'GAG' => 'E',
     'GGA' => 'G',           'GGC' => 'G',    'GGG' => 'G',        'GGT' => 'G',
  );
- 
-# Chapter 2
-# File handle ##################################################################
+
+################################################################################
+################################################################################
+
+# Chapter 3
+# Extract data from STDIN ######################################################
+# Put the contact information into arrays.
+################################################################################
 # Extract in @list the codons within the set
 # Extract in @aas the residues encoded.
-my $counter = 0;
 my @list = ();
 while (my $line = <STDIN>) {
     
-    
-    # Avoid header
+    # Avoid header from Raw Table
     if(!(grep(/^#/,$line))){
     
         my @columns = split(/\t/,$line);
@@ -85,27 +114,13 @@ while (my $line = <STDIN>) {
     
 }
 
+# Order by num
 @list = sort {$a <=> $b} @list;
-
-for my $item (@list){
-    
-    #print $item."-";
-    
-}
-
-# Genetic Code
-my $gen_code = $ARGV[1];
-if(!$gen_code){ $gen_code = 'st'; }
-if($gen_code ne 'mt' && $gen_code ne 'st'){
-    
-    print "\nERROR: Missing or invalid argument: '<GeneticCode> (st=standar OR mt=mitochondrial)'";
-    print "\nUsage: <STDIN> | ./seqMerge.pl <AlignFile> [<GeneticCode (st=standar OR mt=mitochondrial)>]\n";
-  exit;
-    
-}
 
 # Input AlignFile
 my $align_file = $ARGV[0];
+# Read sequences with BioPerl
+# See API: http://doc.bioperl.org/releases/bioperl-1.6.1/
 my $stream = Bio::SeqIO->new(-file => $align_file);
 my $stream2 = Bio::SeqIO->new(-file => $align_file);
 
@@ -116,9 +131,12 @@ while (my $seq2 = $stream2->next_seq) {
 }
 
 ################################################################################
+################################################################################
 
 # Chapter 3
-# Data proccess ################################################################
+# Proccess #####################################################################
+# For each sequence, take triplets according to the set in Raw Table
+################################################################################
 
 # For each sequence
 my $sequence_number = 0;
@@ -127,49 +145,79 @@ my @new_list = ();
 while (my $seq = $stream->next_seq) {
     
     
-    
+    # Current entire sequence
     my $sequence = $seq->seq;
-    my $previous_seq = "";
+    # Current merge sequence
     my $merge_seq = "";
-    my $shift;
-    my $codon_no;
+    # The array with the codons
     my @all_triplets = ();
+    # If there is not correspondence with the firs sequence (caused by insertions),
+    # the codon is deleted
     my $eliminated_codons = 0;
     
         
-        # For each codon in LIST
+# IF ###########################################################################
+# Specie = Bos taurus (the first one)
+################################################################################
+
         if($sequence_number == 0){
+            
+            # For each number in the set (@list)
             for($codon=0;$codon < scalar @list;$codon++){
+                
+                # While the set begins from 1, the string begins from 0
                 my $codon_no = $list[$codon]-1;
+                
+                # Shift (number of gaps before the current position)
                 my $shift = 0;
+                
+                # Sequence before the current position
                 my $previous_seq = substr(uc($sequence),0,($codon_no*3));
+                
+                # Count the number of gaps
                 while (scalar @{[$previous_seq =~ /-/g]} > $shift){
                     $shift++;
                     $previous_seq = substr(uc($sequence),0,($codon_no*3)+$shift);
                 }
                 
+                # Extract the codon
                 my $triplet = substr(uc($sequence),($codon_no*3)+$shift,3);
+                
+                # Number of gaps into the codon
                 my $no_gaps = 0;        
                 while((scalar @{[$triplet =~ /[A-Z]/g]}) < 3){
                     $no_gaps++;    
                     $triplet = substr(uc($sequence),($codon_no*3)+$shift,3+$no_gaps);
+                    # If something different than A-Z or "-" is found
+                    # End loop
                     if(grep(m/([^A-Z])|([^-])/g,$triplet)){ last; }
                 }
+                
+                # Store the triplet only it is complete.
                 if(length($triplet) == 3){
+                    # Store the triplets
                     push(@all_triplets, $triplet);
+                    # Store further information for the rest of the sequences
                     push(@new_list, $codon_no."-".$shift."-".$no_gaps);
                 }else{
-                    
                     $eliminated_codons++;
-                    
                 }
+                # Continue ...
+# WARNING ######################################################################
+# If $warning == 1, Warning reporting in files
+################################################################################
                 
                 # Translate  ###########################################################
+                # Remove gaps
                 my $coding_triplet = $triplet;
                 $coding_triplet =~ s/-//g;
+                
+                # Residue from sequence
                 my $triplet_ref = "";
+                # Residue from PDB
                 my $res_pdb = "";
                 
+                # Compare
                 if($gen_code eq 'mt'){
         
                     $triplet_ref = $mt_code{$coding_triplet};
@@ -182,6 +230,7 @@ while (my $seq = $stream->next_seq) {
                     
                 }
                 # End: Translate  ######################################################
+                
                 ########################################################################
                 # Validate with PDB ####################################################
                 # First sequence (Bos taurus)
@@ -198,35 +247,55 @@ while (my $seq = $stream->next_seq) {
                 ########################################################################
                 }
             }
+
+# ELSE #########################################################################
+# For sequences different from Bos taurus
+################################################################################
+
         }else{
-            # For each codon in LIST
+            # For each codon in NEW LIST
             for $codon_new (@new_list){
                 
+                # Extract information
                 my @splited = split(/-/,$codon_new);
                 my $codon = $splited[0];
                 my $shift = $splited[1];
                 my $no_gaps = $splited[2];
-                #print $codon_new." ".$no_gaps." | ";
+                
                 if(length($sequence) > $codon*3){
+                    # Extract from sequence
                     my $triplet = substr(uc($sequence),$codon*3+$shift,3+$no_gaps);
+                    # Store for concatenate
                     push(@all_triplets, $triplet);
                 }else{
+                    # If there is no codon in this position (begin and end)
                     push(@all_triplets, "---");
                 }
                 
             }
         }
-    
+
+################################################################################
+################################################################################
+
+# Chapter 4
+# Concatena ####################################################################
+# Build the sequences
+################################################################################
     for my $triplet (@all_triplets){
           
         # Concatenate
-        #$merge_seq = $merge_seq.$triplet;
         $merge_seq = $merge_seq.$triplet;
         
     }
-    
+
+# Chapter 5
+# Write in specified format ####################################################
+# Set $format to "phy" for PHYLIPS or anythig for FASTA
+################################################################################
+   my $format = "phy";
+   
     my $seq_name = substr($seq->id,0,9);
-    my $format = "phy";
     if($format eq "phy"){
     
         # Output <STDOUT> (Phylip format)
@@ -243,15 +312,18 @@ while (my $seq = $stream->next_seq) {
         print $seq_name."  ".$spaces;
         #$merge_seq =~ s/-//g;
         print $merge_seq."\n";
+        
     }else{
+        
         # Output <STDOUT> (Fasta format)
         print ">".$seq_name." \n";
         #$merge_seq =~ s/-//g;
         print $merge_seq."\n";
+        
     }
     
     $sequence_number++;
     
 }
-
+# End While
 ################################################################################
