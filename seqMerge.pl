@@ -18,6 +18,9 @@ use Bio::SeqIO;
   exit;
  }
  
+# Debuggin
+my $warning = 0;
+ 
 # Three to one letter translation
 my %mt_code =  (
     'TCA' => 'S',           'TCC' => 'S',    'TCG' => 'S',        'TCT' => 'S',
@@ -62,20 +65,23 @@ my %standard_code =  (
 # Extract in @list the codons within the set
 # Extract in @aas the residues encoded.
 my $counter = 0;
+my @list = ();
 while (my $line = <STDIN>) {
     
     
     # Avoid header
-    if($counter < 3){ $counter++; next; }
+    if(!(grep(/^#/,$line))){
     
-    my @columns = split(/\t/,$line);
-    
-    my $num = $columns[1];
-    my $aa = $columns[2];
-    
-    
-    push(@aas, $aa);
-    push(@list, $num);
+        my @columns = split(/\t/,$line);
+        
+        my $num = $columns[1];
+        my $aa = $columns[2];
+        
+        
+        push(@aas, $aa);
+        push(@list, $num);
+        
+    }
     
 }
 
@@ -83,7 +89,7 @@ while (my $line = <STDIN>) {
 
 for my $item (@list){
     
-    #print $item."\n";
+    #print $item."-";
     
 }
 
@@ -179,7 +185,7 @@ while (my $seq = $stream->next_seq) {
                 ########################################################################
                 # Validate with PDB ####################################################
                 # First sequence (Bos taurus)
-                
+                if($warning){
                     if(!$triplet_ref){ $triplet_ref = "??"; }
                     if($triplet_ref && $triplet_ref ne $aas[$codon]){
                         
@@ -187,7 +193,7 @@ while (my $seq = $stream->next_seq) {
                         print "\nWARNING: Non coincidence encountered in residue number: $codon_no.\n";
                         print $triplet." => ".$triplet_ref." (Residue in PDB: ".$aas[$codon]." - Gaps: ".$shift." - )";
                         print "\n---------------------------------------------------------------------\n";
-                
+                    }
                 # End: Validate with PDB ###############################################
                 ########################################################################
                 }

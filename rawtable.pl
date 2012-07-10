@@ -146,9 +146,9 @@ foreach my $residueID (@residues) {
 
 # Chapter 4
 # Table drawing ################################################################
-print "Raw Table for $chainID.\n";
-print "ChainID\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
-print "-------\t--------\t--\t-------\t-----------------\n";
+print "#Raw Table for $chainID.\n";
+print "#ChainID\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
+print "#-------\t--------\t--\t-------\t-----------------\n";
 
 
 #for(my $i=0;$i<=$chain_length;$i++){

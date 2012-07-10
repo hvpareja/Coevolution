@@ -1,17 +1,17 @@
-   16    6
-Bos         CTTTAC
-Sus         TTATAT
-Equus       CTCTAT
-Ailuropod   CTCTAT
-Canis       CTTTAC
-Macaca      CTATAT
-Pan         CTATAC
-Homo        CTATAC
-Pongo       TTATAC
-Rousettus   CTTTAC
-Oryctolag   CTATAC
-Ovis        CTCTAT
-Cavia       TTATAC
-Loxodonta   CTATAT
-Rattus      CTTTAT
-Mus         CTTTAC
+   16    15
+Bos         CTACGGGGACTTTAC
+Sus         CTACGCGGATTATAT
+Equus       CTCCGTGGCCTCTAT
+Ailuropod   CTTCGAGGACTCTAT
+Canis       CTACGGGGGCTTTAC
+Macaca      CTTCGCGGGCTATAT
+Pan         TTACGTGGCCTATAC
+Homo        CTACGCGGCCTATAC
+Pongo       CTACGCGGCTTATAC
+Rousettus   CTTCGAGGACTTTAC
+Oryctolag   CTTCGAGGTCTATAC
+Ovis        CTTCGAGGGCTCTAT
+Cavia       CTCCGAGGATTATAC
+Loxodonta   CTTCGCGGCCTATAT
+Rattus      CTACGAGGCCTTTAT
+Mus         CTGCGCGGCCTTTAC

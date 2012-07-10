@@ -1,17 +1,17 @@
-   16    0
-Bos         
-Sus         
-Equus       
-Ailuropod   
-Canis       
-Macaca      
-Pan         
-Homo        
-Pongo       
-Rousettus   
-Oryctolag   
-Cavia       
-Loxodonta   
-Rattus      
-Mus         
-Ovis        
+   16    9
+Bos         ACATCAATA
+Sus         ACTTCAATA
+Equus       ACATCCATA
+Ailuropod   ACTTCCATG
+Canis       ACCTCCATA
+Macaca      ACATCCATA
+Pan         ACTTCCATA
+Homo        ACTTCCATA
+Pongo       ACCTCTATA
+Rousettus   ACATCCATA
+Oryctolag   TCATCCATA
+Cavia       TCTTCCATA
+Loxodonta   ACATCTATA
+Rattus      ACATCAATA
+Mus         ACATCCATA
+Ovis        ACATCAATG

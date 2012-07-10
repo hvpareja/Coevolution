@@ -3,12 +3,12 @@
 ---------------------------------
 k	SE	Category
 ----	----	-----------------
-13.0976	2.6413	Contact
-0	nan	ContactBuried
-13.1923	2.677	ContactExposed
-11.9139	2.4496	NonContact
-2.5535	1.6549	NonContactBuried
-16.3239	3.5594	NonContactExposed
+12.9553	2.6	Contact
+11.3589	12.0768	ContactBuried
+13.0507	2.6356	ContactExposed
+11.6052	2.3851	NonContact
+2.5183	1.5785	NonContactBuried
+16.1101	3.4682	NonContactExposed
 12.1211	1.7449	Total
 ---------------------------------
 

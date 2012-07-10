@@ -1,18 +1,18 @@
-   17    0
-Bos         
-Sus         
-Equus       
-Ailuropod   
-Macaca      
-Pan         
-Homo        
-Nomascus    
-Pongo       
-Rousettus   
-Cynopteru   
-Oryctolag   
-Cavia       
-Loxodonta   
-Rattus      
-Mus         
-Ornithorh   
+   17    6
+Bos         TTGTCG
+Sus         TTGTCG
+Equus       TTGTCT
+Ailuropod   TTGGCG
+Macaca      TTGGCC
+Pan         TTGGCC
+Homo        TTGGCC
+Nomascus    TTGGCC
+Pongo       TTGGCC
+Rousettus   TTGTCT
+Cynopteru   TTGTCT
+Oryctolag   CTGTCC
+Cavia       CTGTCT
+Loxodonta   TTGTCT
+Rattus      CTGTCC
+Mus         CTGTCC
+Ornithorh   TTGTCT
