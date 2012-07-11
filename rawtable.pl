@@ -147,8 +147,8 @@ foreach my $residueID (@residues) {
 # Chapter 4
 # Table drawing ################################################################
 print "#Raw Table for $chainID.\n";
-print "#ChainID\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
-print "#-------\t--------\t--\t-------\t-----------------\n";
+print "#ChainID\tChainID2\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
+print "#-------\t-------\t--------\t--\t-------\t-----------------\n";
 
 
 #for(my $i=0;$i<=$chain_length;$i++){
@@ -156,13 +156,82 @@ for(my $i=0;$i<scalar @bin_array;$i++){
     my $no = $i+1;
     my $pdbNum = $dssp->_pdbNum( $no );
     my $aa = $dssp->resAA($pdbNum);
+    my $chainID2 = "--";
     
     # Check if the residue is in conctact
-    my $bool_contact = grep /.{3}-$pdbNum\t$chainID/, @contact_data;
+    my @bool_contact = grep /.{3}-$pdbNum\t$chainID/, @contact_data;
     
-    if($bool_contact){ $contact = 1}else{ $contact = 0 }
+    if(@bool_contact){
+        
+        my @array_res_con = ();
+        
+        $contact = 1;
+        for my $one_contact (@bool_contact){
+            
+            my @cols = split(/\t/,$one_contact);
+                
+                my $res_one = $cols[1];
+                my $res_two = $cols[3];
+                
+                $res_one =~ s/\n//g;
+                $res_two =~ s/\n//g;
+                
+                my $res_con = "";
+                
+                if($res_one eq $chainID){
+                    
+                    $res_con = $res_two;
+                    
+                }else{
+                    
+                    $res_con = $res_one;
+                    
+                }
+                
+                
+                
+                push(@array_res_con, $res_con);
+                
+                if($chainID2 eq "--"){
+                
+                    $chainID2 = $res_con;
+                
+                }else{
+                    
+                    $chainID2 = $chainID2."|".$res_con;
+                    
+                }
+            
+        }
+        
+        $chainID2 = "";
+        # The array is converted in a hash, giving to each element (key) the value 1
+        my %hash = map {$_, 1} @array_res_con;
+        # In this way the new_array doesn't contain contain duplicated elements
+        my @new_array_rc = keys %hash;
+        
+        for my $res (@new_array_rc){
+            
+            if($chainID2 eq ""){
+                
+                    $chainID2 = $res;
+                
+                }else{
+                    
+                    $chainID2 = $chainID2."|".$res;
+                    
+                }
+            
+        }
+        
+                      
+    }else{
+        
+        $contact = 0;
+        
+    }
     
-    print "$chainID\t$pdbNum\t$aa\t$contact\t$bin_array[$i]\n";
+    print "$chainID\t$chainID2\t$pdbNum\t$aa\t$contact\t$bin_array[$i]\n";
     
 }
 

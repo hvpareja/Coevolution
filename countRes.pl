@@ -36,6 +36,15 @@ use Bio::Structure::IO::pdb;
         
         print "Chain ".$chain->id.": ".scalar @res." residues.\n";
         
+        foreach my $res (@res){
+         
+         # Uncoment to get the sequence
+         #my @split = split(/-/, $res->id);
+         #print $split[0]."|";
+         
+        }
+        
+        
     }
     
  }
