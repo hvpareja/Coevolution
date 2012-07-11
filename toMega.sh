@@ -3,7 +3,7 @@
 if [ $# -lt 5 ]; then
 	echo -e "\nERROR: Any argument is missing."
 	echo -e "Usage:"
-	echo -e "./toMega.sh <contact_file> <pdb_file> <chain> <align_file> <mega_path> [<Gene_code (st=standard -default- or mt=mitochondrial>]\n"
+	echo -e "./toMega.sh <contact_file> <pdb_file> <chain> <align_file> <mega_path> [<Gene_code (st=standard -default- or mt=mitochondrial> <ChainList>]\n"
 	exit
 fi
 
@@ -25,7 +25,9 @@ gene_code=$6
 # Output path
 mega_path=$5
 
-~/coevolution/./rawtable.pl $contact_file $pdb_file $chain > temp_raw
+# Chain list
+listChains=$7
+~/coevolution/./rawtable.pl $contact_file $pdb_file $chain $listChains > temp_raw
 clear
 
 cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Total.phy

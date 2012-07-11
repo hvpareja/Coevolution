@@ -44,12 +44,23 @@ my %ASA_GXG_total =  (
 # DSSP algorithm is required in the system
 ################################################################################
 
-# Usage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [<fromRes> <toRes>]
+# Usage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [ <listChainContact -separated with "-"-> <Exp_threshold> <Thresh_margin>]
   my $num_args = $#ARGV + 1;
  if ($num_args < 3) {
-  print "ERROR: Missing arguments.\nUsage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [<Exp_threshold> <Thresh_margin>]\n";
+  print "ERROR: Missing arguments.\nUsage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [ <listChainContact -separated with "-"-> <Exp_threshold> <Thresh_margin>]\n";
   exit;
  }
+ 
+# Chains contact with
+my @chains_contact = ();
+$string_contacts = $ARGV[3];
+if($string_contacts){
+    my @SplitedContact = split(/-/, $string_contacts);
+    for my $ChainContactW (@SplitedContact){
+        push(@chains_contact, $ChainContactW);
+        #print $ChainContactW."\n";
+    }
+}
 
 # Chapter 2
 # File handle ##################################################################
@@ -71,8 +82,8 @@ open TEMP, ">".$temp_file;
 # Chapter 3
 # Data preparation #############################################################
 my $chainID = $ARGV[2];
-my $th_expo = $ARGV[3]; if(!$ARGV[3]){ $th_expo = 0.05; }
-my $th_margin = $ARGV[4]; if(!$ARGV[4]){ $th_margin = 0; }
+my $th_expo = $ARGV[4]; if(!$ARGV[4]){ $th_expo = 0.05; }
+my $th_margin = $ARGV[5]; if(!$ARGV[5]){ $th_margin = 0; }
 # Chain extractor
 my $coord = "";
 # parse the input file saving only backbone atoms coordinates
@@ -87,9 +98,6 @@ for (my $line = 0; $line < scalar @pdbArray; $line++) {
 
 print TEMP $coord;
 close TEMP;
-
-# Chains contact with
-my @chains_contact = ("C");
 
 # DSSP calling
 system("dssp $temp_file dssp_temp");
@@ -226,16 +234,19 @@ for(my $i=0;$i<scalar @bin_array;$i++){
             
         }
         
-        # Change boolean if doesn't contact with one of the specified chains 
-        $contact = 0;
-        foreach my $chain_c (@chains_contact){
-            
-            foreach my $chain_d (@new_array_rc){
+        #IF Mode 2
+        if($string_contacts){
+            # Change boolean if doesn't contact with one of the specified chains 
+            $contact = 0;
+            foreach my $chain_c (@chains_contact){
                 
-                if($chain_c eq $chain_d){ $contact = 1; }
+                foreach my $chain_d (@new_array_rc){
+                    
+                    if($chain_c eq $chain_d){ $contact = 1; }
+                    
+                }
                 
             }
-            
         }
                       
     }else{
