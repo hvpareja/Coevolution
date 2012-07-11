@@ -103,8 +103,8 @@ while (my $line = <STDIN>) {
     
         my @columns = split(/\t/,$line);
         
-        my $num = $columns[1];
-        my $aa = $columns[2];
+        my $num = $columns[2];
+        my $aa = $columns[3];
         
         
         push(@aas, $aa);

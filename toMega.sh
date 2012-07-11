@@ -29,38 +29,38 @@ mega_path=$5
 clear
 
 cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Total.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Contact.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContact.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactBuried.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactExposed.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactBuried.phy
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactExposed.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Contact.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContact.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactBuried.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactExposed.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactBuried.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactExposed.phy
 
 echo "Contact: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1'
 echo "Non Contact: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0'
 echo "Contact Buried: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t0'
 echo "Contact Exposed: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t1'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t1'
 echo "Non Contact Buried: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t0'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t0'
 echo "Non Contact Exposed: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1'
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t1'
 
 echo "Contact: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1' | wc -l
 echo "Non Contact: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0' | wc -l
 echo "Contact Buried: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t0' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t0' | wc -l
 echo "Contact Exposed: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t1\t1' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t1' | wc -l
 echo "Non Contact Buried: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t0' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t0' | wc -l
 echo "Non Contact Exposed: "
-cat temp_raw | grep -P '^.\t[0-9]*\t[A-Z]\t0\t1' | wc -l
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t1' | wc -l
 
 rm temp_raw
 

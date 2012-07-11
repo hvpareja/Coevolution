@@ -88,6 +88,8 @@ for (my $line = 0; $line < scalar @pdbArray; $line++) {
 print TEMP $coord;
 close TEMP;
 
+# Chains contact with
+my @chains_contact = ("C");
 
 # DSSP calling
 system("dssp $temp_file dssp_temp");
@@ -224,6 +226,17 @@ for(my $i=0;$i<scalar @bin_array;$i++){
             
         }
         
+        # Change boolean if doesn't contact with one of the specified chains 
+        $contact = 0;
+        foreach my $chain_c (@chains_contact){
+            
+            foreach my $chain_d (@new_array_rc){
+                
+                if($chain_c eq $chain_d){ $contact = 1; }
+                
+            }
+            
+        }
                       
     }else{
         
