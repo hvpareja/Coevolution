@@ -1,4 +1,4 @@
-YN00 mer_M_Total.phy
+YN00 mer_Z_Total.phy
 
 ns =  16	ls =  30
 
