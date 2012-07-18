@@ -34,14 +34,22 @@
  my $seq1_len = $header1[2];
  my $seq2_len = $header2[2];
  
+ if(!$seq1_len || $seq1_len == 0 || !$seq2_len || !$seq2_len){
+    
+    print "No sequence in at least one of the files.\n";
+    close FOUT;
+    exit;
+    
+ }
+ 
  my $number_of_species = $header1[1];
  
  #print $seq1_len." ".$seq2_len."\n";
  my $new_seq_len = $seq1_len + $seq2_len;
  printf FOUT "%5s%7s\n", $number_of_species,$new_seq_len;
 
- my @file1_content = grep(/[A,T,G,C]/,<FH1>);
- my @file2_content = grep(/[A,T,G,C]/,<FH2>);
+ my @file1_content = grep(/[A,T,G,C]/,@complete_file1);
+ my @file2_content = grep(/[A,T,G,C]/,@complete_file2);
 
 # Handing data from file2
 my @file2_sequences = ();

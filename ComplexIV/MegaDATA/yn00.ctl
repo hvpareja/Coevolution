@@ -1,4 +1,4 @@
-      seqfile = mer_MIT_Contact.phy.txt  
+      seqfile = mer_MIT_Total.phy  
      *seqfile = examples/abglobin.nuc * sequence data file name
       outfile = output.txt           * main result file
       verbose = 0  * 1: detailed output (list sequences), 0: concise output
