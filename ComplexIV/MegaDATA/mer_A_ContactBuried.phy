@@ -1,17 +1,24 @@
-   16    9
+   23    9
 Bos         CTACGGGGA
-Sus         CTACGCGGA
+Balaenopt   CTACGAGGG
+Balaenopt   CTACGAGGA
 Equus       CTCCGTGGC
-Ailuropod   CTTCGAGGA
-Canis       CTACGGGGG
-Macaca      CTTCGCGGG
-Pan         TTACGTGGC
+Equus_2     CTCCGTGGC
+Rhinocero   CTACGTGGA
+Ceratothe   CTCCGTGGA
 Homo        CTACGCGGC
-Pongo       CTACGCGGC
-Rousettus   CTTCGAGGA
-Oryctolag   CTTCGAGGT
-Ovis        CTTCGAGGG
-Cavia       CTCCGAGGA
-Loxodonta   CTTCGCGGC
-Rattus      CTACGAGGC
+Pan         TTACGTGGC
+Pan_2       TTACGTGGT
+Gorilla     TTACGTGGT
+Pongo       CTACGCGGT
+Hylobates   CTACGCGGC
+Felis       TTACGAGGC
+Halichoer   CTCCGAGGC
+Phoca       CTCCGAGGC
 Mus         CTGCGCGGC
+Rattus      CTACGAGGC
+Erinaceus   CTTCGTGGG
+Didelphis   TTACGTGGA
+Ornithorh   CTTCGTGGA
+Oryctolag   CTTCGAGGT
+Cavia       CTCCGAGGA

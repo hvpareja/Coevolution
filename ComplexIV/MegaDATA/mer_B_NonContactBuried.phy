@@ -1,17 +1,24 @@
-   16    12
+   23    12
 Bos         ACATCAATAATT
-Sus         ACTTCAATAATC
+Balaenopt   GCATCAATAATC
+Balaenopt   ACATCAATAATC
 Equus       ACATCCATAATT
-Ailuropod   ACTTCCATGATT
-Canis       ACCTCCATAATC
-Macaca      ACATCCATAATC
-Pan         ACTTCCATAATC
+Equus_2     ACATCCATAATT
+Rhinocero   ACATCCATAATC
+Ceratothe   ACATCCATAATC
 Homo        ACTTCCATAATC
+Pan         ACTTCCATAATC
+Pan_2       ACTTCCATAATC
+Gorilla     ACTTCTATAATC
 Pongo       ACCTCTATAATC
-Rousettus   ACATCCATAATT
+Hylobates   ACATCCATAATC
+Felis       ACATCCATAATT
+Halichoer   ACCTCTATAATC
+Phoca       ACCTCTATAATC
+Mus         ACATCCATAATT
+Rattus      ACATCAATAATT
+Erinaceus   TCTTCAATAATT
+Didelphis   ACATCTATAATT
+Ornithorh   ACCTCCATGATT
 Oryctolag   TCATCCATAATC
 Cavia       TCTTCCATAATT
-Loxodonta   ACATCTATAACT
-Rattus      ACATCAATAATT
-Mus         ACATCCATAATT
-Ovis        ACATCAATGATC
