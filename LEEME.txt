@@ -6,31 +6,31 @@ Complejo 4:
 ./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb B ComplexIV/Alignments/ChainB_aligned_paper.fasta ComplexIV/MegaDATA/ mt "D-E-F-G-H-I-J-K-L-M-Q-R-S-T-U-V-W-X-Y-Z"
 ./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb C ComplexIV/Alignments/ChainC_aligned_paper.fasta ComplexIV/MegaDATA/ mt "D-E-F-G-H-I-J-K-L-M-Q-R-S-T-U-V-W-X-Y-Z"
 
-- nuc _ mt
-
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb D ComplexIV/Alignments/ChainD_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb E ComplexIV/Alignments/ChainE_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb F ComplexIV/Alignments/ChainE_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb G ComplexIV/Alignments/ChainG_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb H ComplexIV/Alignments/ChainH_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb I ComplexIV/Alignments/ChainI_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb J ComplexIV/Alignments/ChainJ_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb K ComplexIV/Alignments/ChainK_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb L ComplexIV/Alignments/ChainL_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb M ComplexIV/Alignments/ChainM_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-
-- nuc _ mt (monomero2)
-
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Q ComplexIV/Alignments/ChainD_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb R ComplexIV/Alignments/ChainE_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb S ComplexIV/Alignments/ChainE_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb T ComplexIV/Alignments/ChainG_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb U ComplexIV/Alignments/ChainH_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb V ComplexIV/Alignments/ChainI_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb W ComplexIV/Alignments/ChainJ_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb X ComplexIV/Alignments/ChainK_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Y ComplexIV/Alignments/ChainL_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
-./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Z ComplexIV/Alignments/ChainM_aligned.fasta ComplexIV/MegaDATA/ st "A-N"
+# nuc _ mt
+#
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb D ComplexIV/Alignments/ChainD_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb E ComplexIV/Alignments/ChainE_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb F ComplexIV/Alignments/ChainE_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb G ComplexIV/Alignments/ChainG_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb H ComplexIV/Alignments/ChainH_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb I ComplexIV/Alignments/ChainI_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb J ComplexIV/Alignments/ChainJ_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb K ComplexIV/Alignments/ChainK_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb L ComplexIV/Alignments/ChainL_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb M ComplexIV/Alignments/ChainM_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+#
+# nuc _ mt (monomero2)
+#
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Q ComplexIV/Alignments/ChainD_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb R ComplexIV/Alignments/ChainE_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb S ComplexIV/Alignments/ChainE_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb T ComplexIV/Alignments/ChainG_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb U ComplexIV/Alignments/ChainH_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb V ComplexIV/Alignments/ChainI_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb W ComplexIV/Alignments/ChainJ_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb X ComplexIV/Alignments/ChainK_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Y ComplexIV/Alignments/ChainL_paper.fasta ComplexIV/MegaDATA/ st "A-N"
+./toMega.sh ComplexIV/contact_2OCC_1.txt ComplexIV/2OCC.pdb Z ComplexIV/Alignments/ChainM_paper.fasta ComplexIV/MegaDATA/ st "A-N"
 
 
 rm k_*; for c in Q R S T U V W X Y Z; do ./paml.sh $c 0; done; cat k_?.txt > k_results.txt; cat k_results.txt

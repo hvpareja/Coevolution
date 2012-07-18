@@ -34,9 +34,22 @@
  my $seq1_len = $header1[2];
  my $seq2_len = $header2[2];
  
- if(!$seq1_len || $seq1_len == 0 || !$seq2_len || !$seq2_len){
+ if($seq1_len == 0 || $seq2_len == 0){
     
     print "No sequence in at least one of the files.\n";
+    
+    if($seq1_len == 0){
+        print "Copy $file2 in output.\n";
+        foreach my $row (@complete_file2){
+            print FOUT $row;
+        }
+    }else{
+        print "Copy $file1 in output.\n";
+        foreach my $row (@complete_file1){
+            print FOUT $row;
+        }
+    }
+    
     close FOUT;
     exit;
     
