@@ -111,10 +111,8 @@ for my $line2 (@file2_content){
             $match = 1;
             $matching_sequence = $file2_sequences[$selected_number];
             $matching_name = $file2_names[$selected_number];
-            delete $file2_sequences[$selected_number];
-            shift(@file2_sequences);
-            delete $file2_names[$selected_number];
-            shift(@file2_names);
+            splice(@file2_sequences,$selected_number, 1);
+            splice(@file2_names,$selected_number, 1);
         }else{
             print "Incorrect selection!!\n";
         }
