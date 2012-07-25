@@ -1,4 +1,4 @@
-      seqfile = Set_NonContact.phy  
+      seqfile = /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_Total.phy  
      *seqfile = examples/abglobin.nuc * sequence data file name
       outfile = output.txt           * main result file
       verbose = 0  * 1: detailed output (list sequences), 0: concise output

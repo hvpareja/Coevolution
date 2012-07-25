@@ -1,0 +1,63 @@
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_Contact
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_ContactBuried
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_ContactExposed
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_NonContact
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_NonContactBuried
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_NonContactExposed
+0.000	0.000	0.000	0.000	 /Users/eiblab/github/local/Coevolution/ComplexIV/MegaDATA/mer_E_Total
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+ERROR: Missing arguments.
+Usage: <STDIN> | ./calculatesK.pl <FileName>
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_Contact
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_ContactBuried
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_ContactExposed
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContact
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContactBuried
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContactExposed
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_Total
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_Contact
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_ContactBuried
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_ContactExposed
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContact
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContactBuried
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_NonContactExposed
+0.000	0.000	0.000	0.000	 \/Users\/eiblab\/github\/local\/Coevolution\/ComplexIV\/MegaDATA\/mer_E_Total

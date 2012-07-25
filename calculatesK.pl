@@ -123,6 +123,6 @@ if($kdS eq "nan"){ $kdS = 0 }
 if($kdSSE eq "nan"){ $kdSSE = 0 }
 if($kOmega eq "nan"){ $kOmega = 0 }
 
-$fileName =~ s/^mer_\w+_//g;
+$fileName =~ s/^.*mer_\w+_//g;
 $fileName =~ s/.phy$//g;
 printf("%.3f\t%.3f\t%.3f\t%.3f\t $fileName\n", ($kdN , $kdNSE, $kdS, $kdSSE));
