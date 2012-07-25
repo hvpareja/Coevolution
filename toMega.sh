@@ -31,12 +31,12 @@ listChains=$7
 clear
 
 cat temp_raw | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Total.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_Contact.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContact.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactBuried.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_ContactExposed.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactBuried.phy
-cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}mer_${chain}_NonContactExposed.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_Contact.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_NonContact.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_ContactBuried.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_ContactExposed.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t0' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_NonContactBuried.phy
+cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t0\t1' | ~/coevolution/./seqMerge.pl $align_file $gene_code > ${mega_path}/mer_${chain}_NonContactExposed.phy
 
 echo "Contact: "
 cat temp_raw | grep -P '^.\t.*\t[0-9]*\t[A-Z]\t1'

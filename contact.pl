@@ -23,24 +23,28 @@ use Bio::Structure::IO::pdb;
 # Pool of variables ###########################################################
  
  # Distance Threshold
- my $dis_threshold = $ARGV[2]; if(!$ARGV[2]){ $dis_threshold = 4; }
+ my $dis_threshold = $ARGV[3]; if(!$ARGV[3]){ $dis_threshold = 4; }
  
  # The output only shows elements where the distance is lower than D. Threshold
  # (see above). But you can switch to 1 this boolean to show all distances:
- my $all_distances = $ARGV[1]; if(!$ARGV[1]){ $all_distances = 0; }
+ my $all_distances = $ARGV[2]; if(!$ARGV[2]){ $all_distances = 0; }
 
 ###############################################################################
 
 # Chapter 3
 # File Handling ############################################################### 
   my $num_args = $#ARGV + 1;
- if ($num_args < 1) {
-  print "ERROR: Missing arguments.\nUsage: contact.pl <pdbfile> [<all_distances> <dis_threshold>]\n";
+ if ($num_args < 2) {
+  print "ERROR: Missing arguments.\nUsage: contact.pl <pdbfile> <ouputPath> [<all_distances> <dis_threshold>]\n";
   exit;
  }
  
  # Input pdb file (just lines witch begin with "ATOM")
  my $input_file = $ARGV[0];
+ my $output_path = $ARGV[1];
+ 
+ $output_path =~ s/\/$//g;
+ $output_path = $output_path."/";
  
  my $file_str = $input_file;
     $file_str =~ s/\..*$//g;
@@ -50,9 +54,9 @@ use Bio::Structure::IO::pdb;
  my $number = 1;
  
  # File for atom contacts
- my $output_detailed_file = "detailed_".$file_str."_".$number.".txt";
+ my $output_detailed_file = $output_path."detailed_".$file_str."_".$number.".txt";
  # File for residue contacts
- my $output_contact_file = "contact_".$file_str."_".$number.".txt";
+ my $output_contact_file = $output_path."contact_".$file_str."_".$number.".txt";
  
  
  while (-e $output_detailed_file){
@@ -64,9 +68,9 @@ use Bio::Structure::IO::pdb;
     $number2++;
     
     # File for atom contacts
-    $output_detailed_file = "detailed_".$file_str."_".$number2.".txt";
+    $output_detailed_file = $output_path."detailed_".$file_str."_".$number2.".txt";
     # File for residue contacts
-    $output_contact_file = "contact_".$file_str."_".$number2.".txt";
+    $output_contact_file = $output_path."contact_".$file_str."_".$number2.".txt";
     
  }
      
@@ -82,7 +86,7 @@ use Bio::Structure::IO::pdb;
 #  Algorithm ###################################################################
 
 # Send email 
-system("echo 'Starting Job' | mutt -s 'Starting job' hvalverde\@uma.es");
+#system("echo 'Starting Job' | mutt -s 'Starting job' hvalverde\@uma.es");
 
 # For each structure in pdb file (just one)
 while (my $struc = $stream->next_structure) {
@@ -203,10 +207,10 @@ close OUTPUT;
 
 print "The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n";
 # Store the name of the files
-system("contact_file=$output_contact_file");
-system("detailed_file=$output_detailed_file");
+#system("contact_file=$output_contact_file");
+#system("detailed_file=$output_detailed_file");
 # Email when finish
-system("echo 'The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n' | mutt -s 'Finish job' -a $output_contact_file $output_detailed_file -- hvalverde\@uma.es");
+system("echo 'The work has been successfully completed \n\n See $output_contact_file and $output_detailed_file files \n\n' | mail -s 'Finish contact job' \$email");
 exit;
 
 ################################################################################
