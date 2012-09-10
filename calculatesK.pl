@@ -93,6 +93,7 @@ for my $b (@dNSE){
 for my $c (@dS){
     
     # dS sum
+    if($c eq "nan") { $c = 0 }
     $kdS = $kdS+$c;
     
 }
