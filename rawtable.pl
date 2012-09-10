@@ -89,7 +89,8 @@ my $coord = "";
 # parse the input file saving only backbone atoms coordinates
 # format: [string "ATOM"] [number] [atom] [aa] whatever [3 decimal numbers] whateva with two dots in between
 for (my $line = 0; $line < scalar @pdbArray; $line++) {
-    if ($pdbArray[$line] =~ m/ATOM\s+\d+\s+(\w+)\s+\w{3}\s+$chainID+.+\s(\S+\.\S+)\s+(\S+\.\S+)\s+(\S+\.\S+)\s+.+\..+\..+/ig) {
+    #if ($pdbArray[$line] =~ m/ATOM\s+\d+\s+(\w+)\s+\w{3}\s+$chainID+.+\s(\S+\.\S+)\s+(\S+\.\S+)\s+(\S+\.\S+)\s+.+\..+\..+/ig) {
+    if ($pdbArray[$line] =~ m/ATOM\s+\d+\s+(\w+)(\s|.+)+\w{3}\s+$chainID+.+\s(\S+\.\S+)\s+(\S+\.\S+)\s+(\S+\.\S+)\s+.+\..+\..+/ig) {
         if (1) {
             $coord = $coord.$pdbArray[$line];
         }
@@ -165,6 +166,8 @@ print "#-------\t-------\t--------\t--\t-------\t-----------------\n";
 for(my $i=0;$i<scalar @bin_array;$i++){   
     my $no = $i+1;
     my $pdbNum = $dssp->_pdbNum( $no );
+	# Avoid an error but not gives a solution
+	if($pdbNum eq ""){ next; }
     my $aa = $dssp->resAA($pdbNum);
     my $chainID2 = "--";
     
@@ -259,6 +262,6 @@ for(my $i=0;$i<scalar @bin_array;$i++){
     
 }
 
-system("rm $temp_file");
-system("rm dssp_temp");
+#system("rm $temp_file");
+#system("rm dssp_temp");
 exit;
