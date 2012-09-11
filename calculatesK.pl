@@ -115,16 +115,11 @@ for my $d (@dSSE){
 }
 
 #for my $e (@omega){
-    
     # Omega sum
-#    if($e != 99.0000){
-        
-#        $e = 9;
-        
-#    }
-    
-#    $kOmega = $kOmega+$e;
-    
+#    if($e != 99.0000){      
+#        $e = 9;       
+#    }   
+#    $kOmega = $kOmega+$e;   
 #}
 
 #if($kdN eq "nan"){ $kdN = 0 }

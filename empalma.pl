@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 # empalma.pl
 
-# Usage: <STDIN> | ./empalma.pl
+# Usage: <STDIN> | ./empalma.pl <file1> <file2>
   my $num_args = $#ARGV + 1;
  if ($num_args < 2) {
  print "ERROR: Missing arguments.\nUsage: ./empalma.pl <file1> <file2>\n";
