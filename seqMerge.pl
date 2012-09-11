@@ -204,7 +204,7 @@ while (my $seq = $stream->next_seq) {
                 }
                 # Continue ...
 # WARNING ######################################################################
-# If $warning == 1, Warning reporting in files
+# If $warning == 1, Warning reporting in output files
 ################################################################################
                 
                 # Translate  ###########################################################

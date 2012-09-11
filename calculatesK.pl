@@ -76,10 +76,16 @@ my $kdS    = 0;
 my $kdSSE  = 0;
 my $kOmega = 0;
 
+# Message for errors
+my $msg = "";
+my $msg2 = "";
+
 # Sum
 for my $a (@dN){
     
     # dN sum
+    if($a == 99.0000){ $msg2 = "*99"}
+    if($a eq "nan") { $a = 0; $msg = "*NaN" }
     $kdN = $kdN+$a;
     
 }
@@ -87,13 +93,15 @@ for my $a (@dN){
 for my $b (@dNSE){
     
     # SE sum
+    if($b == 99.0000){ $msg2 = "*99"}
     $kdNSE = $kdNSE+$b;
     
 }
 for my $c (@dS){
     
     # dS sum
-    if($c eq "nan") { $c = 0 }
+    if($c == 99.0000){ $msg2 = "*99"}
+    if($c eq "nan") { $c = 0; $msg = "*NaN" }
     $kdS = $kdS+$c;
     
 }
@@ -101,6 +109,7 @@ for my $c (@dS){
 for my $d (@dSSE){
     
     # SE sum
+    if($d == 99.0000){ $msg2 = "*99"}
     $kdSSE = $kdSSE+$d;
     
 }
@@ -118,12 +127,12 @@ for my $d (@dSSE){
     
 #}
 
-if($kdN eq "nan"){ $kdN = 0 }
-if($kdNSE eq "nan"){ $kdNSE = 0 }
-if($kdS eq "nan"){ $kdS = 0 }
-if($kdSSE eq "nan"){ $kdSSE = 0 }
-if($kOmega eq "nan"){ $kOmega = 0 }
+#if($kdN eq "nan"){ $kdN = 0 }
+#if($kdNSE eq "nan"){ $kdNSE = 0 }
+#if($kdS eq "nan"){ $kdS = 0 }
+#if($kdSSE eq "nan"){ $kdSSE = 0 }
+#if($kOmega eq "nan"){ $kOmega = 0 }
 
 $fileName =~ s/^.*mer_\w+_//g;
 $fileName =~ s/.phy$//g;
-printf("%.3f\t%.3f\t%.3f\t%.3f\t $fileName\n", ($kdN , $kdNSE, $kdS, $kdSSE));
+printf("%.3f\t%.3f\t%.3f\t%.3f\t $fileName\t$msg\t$msg2\n", ($kdN , $kdNSE, $kdS, $kdSSE));

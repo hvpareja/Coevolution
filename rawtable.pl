@@ -166,8 +166,8 @@ print "#-------\t-------\t--------\t--\t-------\t-----------------\n";
 for(my $i=0;$i<scalar @bin_array;$i++){   
     my $no = $i+1;
     my $pdbNum = $dssp->_pdbNum( $no );
-	# Avoid an error but not gives a solution
-	if($pdbNum eq ""){ next; }
+	# Avoid an error but not gives a solution /FIXED/
+	#if($pdbNum eq ""){ next; }
     my $aa = $dssp->resAA($pdbNum);
     my $chainID2 = "--";
     
@@ -262,6 +262,6 @@ for(my $i=0;$i<scalar @bin_array;$i++){
     
 }
 
-#system("rm $temp_file");
-#system("rm dssp_temp");
+system("rm $temp_file");
+system("rm dssp_temp");
 exit;
