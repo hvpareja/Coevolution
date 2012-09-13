@@ -4,17 +4,21 @@
 # Usage: <STDIN> | ./calculatesK.pl
   my $num_args = $#ARGV + 1;
  if ($num_args < 1) {
- print "ERROR: Missing arguments.\nUsage: <STDIN> | ./calculatesK.pl <FileName>\n";
+ print "ERROR: Missing arguments.\nUsage: <STDIN> | ./calculatesK.pl <FileName> [<formatlab>]\n";
   exit;
  }
 
+my @N = ();
+my @S = ();
 my @dN = ();
-my @dNSE = ();
+my @dNVar = ();
 my @dS = ();
-my @dSSE = ();
+my @dSVar = ();
 my @omega = ();
 
 my $fileName = $ARGV[0];
+# If $formatlab == 1, the output will be written with other format (see below)
+my $formatlab = $ARGV[1];
 
 for my $row (<STDIN>){
 
@@ -60,20 +64,26 @@ for my $row (<STDIN>){
     #print $dS."\n";
     #print $dSSE."\n";
     
+    push(@N,$N);
+    push(@S,$S);
     push(@dN, $dN);
-    push(@dNSE, $dNSE);
+    push(@dNVar, ($dNSE*$dNSE));
     push(@dS, $dS);
-    push(@dSSE, $dSSE);
+    push(@dSVar, ($dSSE*$dSSE));
     push(@omega, $omega);
-
+    
+    if($formatlab){
+        print $S."\t".$N."\t".$dN."\t".$dNSE*$dNSE."\t".$dS."\t".$dSSE*$dSSE."\n";
+    }
+    
     #print $row."\n";
     
 }
 
 my $kdN    = 0;
-my $kdNSE  = 0;
+my $kdNVar  = 0;
 my $kdS    = 0;
-my $kdSSE  = 0;
+my $kdSVar  = 0;
 my $kOmega = 0;
 
 # Message for errors
@@ -90,11 +100,10 @@ for my $a (@dN){
     
 }
 
-for my $b (@dNSE){
+for my $b (@dNVar){
     
     # SE sum
-    if($b == 99.0000){ $msg2 = "*99"}
-    $kdNSE = $kdNSE+$b;
+    $kdNVar = $kdNVar+$b;
     
 }
 for my $c (@dS){
@@ -106,11 +115,10 @@ for my $c (@dS){
     
 }
 
-for my $d (@dSSE){
+for my $d (@dSVar){
     
     # SE sum
-    if($d == 99.0000){ $msg2 = "*99"}
-    $kdSSE = $kdSSE+$d;
+    $kdSVar = $kdSVar+$d;
     
 }
 
@@ -130,4 +138,8 @@ for my $d (@dSSE){
 
 $fileName =~ s/^.*mer_\w+_//g;
 $fileName =~ s/.phy$//g;
-printf("%.3f\t%.3f\t%.3f\t%.3f\t $fileName\t$msg\t$msg2\n", ($kdN , $kdNSE, $kdS, $kdSSE));
+if(!$formatlab){
+    printf("%.3f\t%.3f\t%.3f\t%.3f\t $fileName\t$msg\t$msg2\n", ($kdN , $kdNVar, $kdS, $kdSVar));
+}else{
+    #printf("%.3f\t%.3f\t%.3f\t%.3f\n", ($kdN , $kdNVar, $kdS, $kdSVar));
+}

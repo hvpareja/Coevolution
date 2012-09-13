@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w
 # seqMerge.pl
 
-
 use warnings;
 use Bio::SeqIO;
 
@@ -29,7 +28,7 @@ my $warning = 0;
   print "ERROR: Missing arguments.\nUsage: <STDIN> | ./seqMerge.pl <AlignFile> [<GeneticCode (st=standar OR mt=mitochondrial)>]\n";
   exit;
  }
- 
+
  # Genetic Code validation
 my $gen_code = $ARGV[1];
 if(!$gen_code){ $gen_code = 'st'; }
@@ -40,6 +39,7 @@ if($gen_code ne 'mt' && $gen_code ne 'st'){
   exit;
     
 }
+
 ################################################################################
 ################################################################################
 
@@ -96,16 +96,16 @@ my %standard_code =  (
 # Extract in @list the codons within the set
 # Extract in @aas the residues encoded.
 my @list = ();
+
 while (my $line = <STDIN>) {
     
     # Avoid header from Raw Table
     if(!(grep(/^#/,$line))){
-    
+        
         my @columns = split(/\t/,$line);
         
         my $num = $columns[2];
         my $aa = $columns[3];
-        
         
         push(@aas, $aa);
         push(@list, $num);
@@ -113,6 +113,7 @@ while (my $line = <STDIN>) {
     }
     
 }
+
 
 # Order by num
 @list = sort {$a <=> $b} @list;
@@ -128,6 +129,7 @@ my $stream2 = Bio::SeqIO->new(-file => $align_file);
 my $num_sequences = 0;
 while (my $seq2 = $stream2->next_seq) {
     $num_sequences++;
+    
 }
 
 ################################################################################
@@ -229,6 +231,7 @@ while (my $seq = $stream->next_seq) {
                     $res_pdb = $standard_code{$aas[$codon]}
                     
                 }
+                
                 # End: Translate  ######################################################
                 
                 ########################################################################
@@ -253,6 +256,7 @@ while (my $seq = $stream->next_seq) {
 ################################################################################
 
         }else{
+            
             # For each codon in NEW LIST
             for $codon_new (@new_list){
                 

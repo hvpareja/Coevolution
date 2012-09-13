@@ -6,7 +6,7 @@ path=$4
 echo -e "#--------------------------------------------------" > ${path}/k_${chain}.txt
 echo -e "#\t\t\t   Chain ${chain}" >> ${path}/k_${chain}.txt
 echo -e "#--------------------------------------------------" >> ${path}/k_${chain}.txt
-echo -e "#kdN\tdNSE\tkdS\tdSSE\t     Category" >> ${path}/k_${chain}.txt
+echo -e "#kdN\tsigm\tkdS\tsigm\t     Category" >> ${path}/k_${chain}.txt
 echo -e "#---\t----\t---\t----\t-------------------" >> ${path}/k_${chain}.txt
 
 echo "# Yang output table ---" > ${path}/YANG_${chain}.txt

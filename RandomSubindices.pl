@@ -11,7 +11,7 @@ use warnings;
 # The size of these sets should be introduced as a parameters ($c and $nc, respectively 
 # The identity of X is the third parameter that need to be introduced.
 ###############################################################################
-my $chain = "E"; # Chain id;
+my $chain = "B"; # Chain id;
 my $c = $ARGV[0]; # Number of contact codons
 my $nc = $ARGV[1]; # Number of non-contact codons
 

@@ -1,6 +1,6 @@
-      seqfile = test/mer_B_Total.phy  
+      seqfile = test/mer_C_NonContact_Expossed.phy  
      *seqfile = examples/abglobin.nuc * sequence data file name
-      outfile = output.txt           * main result file
+      outfile = output2.txt           * main result file
       verbose = 0  * 1: detailed output (list sequences), 0: concise output
         icode = 1  * 0:universal code; 1:mammalian mt; 2-10:see below
 

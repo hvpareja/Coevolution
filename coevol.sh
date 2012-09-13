@@ -17,8 +17,9 @@ echo
 echo "Selecciona una opción del menú para continuar:"
 echo 
 echo "1. Generar archivo de contactos"
-echo "2. Generar secuencias agrupadas"
+echo "2. Generar secuencias a partir de conjuntos de codones"
 echo "3. Cálculo de dN"
+echo "4. Empalmar secuencias"
 echo 
 echo -e "Opción:"; read option
 
@@ -163,5 +164,26 @@ case $option in
         echo "Trabajo completado:";
         echo "Resultados ($pathresults/k_$chain.txt):"
         cat $pathresults/k_$chain.txt
+        exit;;
+        
+        4)
+	clear
+	echo "#######################################################"
+	echo "# EMPALME DE CADENAS                                  #"
+	echo "#######################################################"
+	echo
+        echo "Introduce el nombre del conjunto de cadenas que se van a empalmar (e.g. \"A B C D\"):"
+        read sets
+        echo "Todos los nombres de archivo que se van a procesar deben tener el siguiente formato:"
+        echo "mer_\$chain_\$grupo.phy, donde $chain es la cadena y $grupo es el subset"
+        echo "Introduce la carpeta donde se encuentran los alineamientos:"
+        # Path alignments
+	read alignments
+        for conjunto in $(ls ${alignments}/mer_${sets:0:1}_*); do
+            for chain in $sets; do
+            echo $conjunto
+            done
+        done
+        #./empalma.pl ${alignments}/  ??????????
         exit;
 esac
