@@ -42,8 +42,8 @@ cat output2.txt | grep "+-" | grep "[0-9]" | sed 's/\ +-\ /   /g' | ~/coevolutio
 $matlabPath/bin/./matlab -nodesktop -nosplash -nodisplay -r "run ./$matlabScript; quit;"
 
 # Merge the resulting figures from matlab script
-montage dNplot.png dSplot.png -geometry +4+4 figure.png
-open figure.png
+#montage dNplot.png dSplot.png -geometry +4+4 figure.png
+#open figure.png
 
 # Correlation results
 cat temp_matlab_data
