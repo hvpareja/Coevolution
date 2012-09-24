@@ -4,10 +4,10 @@
 # Script en perl para calcular la distancia entre los ‡tomos de una misma
 # cadena (A), que a su vez est‡n en contacto con una cadena (B). Partimos
 # de un archivo "detailed" que proviene de uno de los dos output de contact.pl.
-# Usage: ./proxymity.pl <detailedFile> <pdbFile> <chainA> <chainB>
+# Usage: ./proximity.pl <detailedFile> <pdbFile> <chainA> <chainB>
 my $num_args = $#ARGV + 1;
 if ($num_args < 4) {
-   print "ERROR: Missing arguments.\nUsage: ./proxymity.pl <detailedFile> <pdbFile> <chainA> <chainB>\n";
+   print "ERROR: Missing arguments.\nUsage: ./proximity.pl <detailedFile> <pdbFile> <chainA> <chainB>\n";
    exit;
 }
 
