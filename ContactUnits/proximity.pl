@@ -52,11 +52,13 @@ my @coord_A_x = ();
 my @coord_A_y = ();
 my @coord_A_z = ();
 my @residueA  = ();
+my @aas_A     = ();
 
 my @coord_B_x = ();
 my @coord_B_y = ();
 my @coord_B_z = ();
 my @residueB  = ();
+my @aas_B     = ();
 # las coordenadas de los ‡tomos que est‡n en los arrays creados arriba. As’,
 # obtenemos dos pares de array, un para para cada cadena, en el mismo orden.
 
@@ -67,11 +69,16 @@ for $atomo (@A_array){
     my @query = grep(/^ATOM\s+$atomo\s+\w+(\s|.+)+\w{3}\s+$chainA/, @pdbData);
     my $atom_info = $query[0];
     my $atom_res  = $atom_info;
+    my $residue_type = $atom_info;
     if(!$atom_info){ next; }
     
     # Extraemos el numero de residuo al que pertenece el Ã¡tomo
     $atom_res =~ s/^ATOM\s+\d+\s+\w+(\s|.+)+\w{3}\s+\w+\s+//g;
     $atom_res =~ s/\s+.*$//g;
+    
+    # Extraemos el typo de residuo (el amino‡cido)
+    $residue_type =~ s/^ATOM\s+\d+\s+\w+(\s|.+)+//g;
+    $residue_type =~ s/\s+$chainA+.+\s(\S+\.\S+)\s+(\S+\.\S+)\s+(\S+\.\S+)\s+.*$//g;
 
     # Ahora elimino con expresiones regulares toda la informac’on de la l’nea
     # que no son las coordenadas.
@@ -83,6 +90,7 @@ for $atomo (@A_array){
     
     my @coord_A = split(/\s+/,$atom_info);
     
+    push(@aas_A,$residue_type);
     push(@residueA,$atom_res);
     push(@coord_A_x,$coord_A[0]);
     push(@coord_A_y,$coord_A[1]);
@@ -97,11 +105,17 @@ for $atomo (@B_array){
     my @query = grep(/^ATOM\s+$atomo\s+\w+(\s|.+)+\w{3}\s+$chainB/, @pdbData);
     my $atom_info = $query[0];
     my $atom_res  = $atom_info;
+    
+    my $residue_type = $atom_info;
     if(!$atom_info){ next; }
     
     # Extraemos el numero de residuo al que pertenece el Ã¡tomo
     $atom_res =~ s/^ATOM\s+\d+\s+\w+(\s|.+)+\w{3}\s+\w+\s+//g;
     $atom_res =~ s/\s+.*$//g;
+    
+    # Extraemos el typo de residuo (el amino‡cido)
+    $residue_type =~ s/^ATOM\s+\d+\s+\w+(\s|.+)+//g;
+    $residue_type =~ s/\s+$chainB+.+\s(\S+\.\S+)\s+(\S+\.\S+)\s+(\S+\.\S+)\s+.*$//g;
     
     # Ahora elimino con expresiones regulares toda la informac’on de la l’nea
     # que no son las coordenadas.
@@ -113,6 +127,7 @@ for $atomo (@B_array){
     
     my @coord_B = split(/\s+/,$atom_info);
     
+    push(@aas_B,$residue_type);
     push(@residueB,$atom_res);
     push(@coord_B_x,$coord_B[0]);
     push(@coord_B_y,$coord_B[1]);

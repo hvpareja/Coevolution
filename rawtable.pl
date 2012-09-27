@@ -35,6 +35,29 @@ my %ASA_GXG_total =  (
    'X' => 90
  );
 
+my %res_hash = (
+   'ALA'=>'A',
+   'ARG'=>'R',
+   'ASN'=>'N',
+   'ASP'=>'D',
+   'CYS'=>'C',
+   'GLN'=>'Q',
+   'GLU'=>'E',
+   'GLY'=>'G',
+   'HIS'=>'H',
+   'ILE'=>'I',
+   'LEU'=>'L',
+   'LYS'=>'K',
+   'MET'=>'M',
+   'PHE'=>'F',
+   'PRO'=>'P',
+   'SER'=>'S',
+   'THR'=>'T',
+   'TRP'=>'W',
+   'TYR'=>'Y',
+   'VAL'=>'V',
+);
+
 # Chapter 1
 # Description ##################################################################
 # This script generates a "raw table":
@@ -45,9 +68,9 @@ my %ASA_GXG_total =  (
 ################################################################################
 
 # Usage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [ <listChainContact -separated with "-"-> <Exp_threshold> <Thresh_margin>]
-  my $num_args = $#ARGV + 1;
+my $num_args = $#ARGV + 1;
  if ($num_args < 3) {
-  print "ERROR: Missing arguments.\nUsage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [ <listChainContact -separated with "-"-> <Exp_threshold> <Thresh_margin>]\n";
+  print "ERROR: Missing arguments.\nUsage: ./rawtable.pl <contact_file> <pdb_file> <chainID> [ <listChainContact -separated with \"-\"-> <Exp_threshold> <Thresh_margin>]\n";
   exit;
  }
  
@@ -158,8 +181,8 @@ foreach my $residueID (@residues) {
 # Chapter 4
 # Table drawing ################################################################
 print "#Raw Table for $chainID.\n";
-print "#ChainID\tChainID2\tRes num.\tAA\tContact\tExposition ($th_expo)\n";
-print "#-------\t-------\t--------\t--\t-------\t-----------------\n";
+print "#ChainID\tChainID2\tRes num.\tAA\tAA2\tContact\tExposition (th=$th_expo)\n";
+print "#-------\t--------\t--------\t--\t--\t-------\t-----------------\n";
 
 
 #for(my $i=0;$i<=$chain_length;$i++){
@@ -170,6 +193,7 @@ for(my $i=0;$i<scalar @bin_array;$i++){
 	#if($pdbNum eq ""){ next; }
     my $aa = $dssp->resAA($pdbNum);
     my $chainID2 = "--";
+    my $aa2 = "-";
     
     # Check if the residue is in conctact
     my @bool_contact = grep /.{3}-$pdbNum\t$chainID/, @contact_data;
@@ -186,6 +210,11 @@ for(my $i=0;$i<scalar @bin_array;$i++){
                 my $res_one = $cols[1];
                 my $res_two = $cols[3];
                 
+                # Residuo de la otra cadena contra el que contacta
+                my @split_col2 = split(/-/,$cols[2]);
+                my $res_contra = $split_col2[0];
+                #
+                
                 $res_one =~ s/\n//g;
                 $res_two =~ s/\n//g;
                 
@@ -201,7 +230,11 @@ for(my $i=0;$i<scalar @bin_array;$i++){
                     
                 }
                 
-                
+                if($aa2 eq "-"){
+                    $aa2 = $res_hash{$res_contra};                    
+                }else{
+                    $aa2 = $aa2."|".$res_hash{$res_contra};
+                }
                 
                 push(@array_res_con, $res_con);
                 
@@ -220,7 +253,7 @@ for(my $i=0;$i<scalar @bin_array;$i++){
         $chainID2 = "";
         # The array is converted in a hash, giving to each element (key) the value 1
         my %hash = map {$_, 1} @array_res_con;
-        # In this way the new_array doesn't contain contain duplicated elements
+        # In this way the new_array doesn't contain duplicated elements
         my @new_array_rc = keys %hash;
         
         for my $res (@new_array_rc){
@@ -258,7 +291,7 @@ for(my $i=0;$i<scalar @bin_array;$i++){
         
     }
     
-    print "$chainID\t$chainID2\t$pdbNum\t$aa\t$contact\t$bin_array[$i]\n";
+    print "$chainID\t$chainID2\t$pdbNum\t$aa\t$aa2\t$contact\t$bin_array[$i]\n";
     
 }
 
