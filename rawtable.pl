@@ -231,9 +231,9 @@ for(my $i=0;$i<scalar @bin_array;$i++){
                 }
                 
                 if($aa2 eq "-"){
-                    $aa2 = $res_hash{$res_contra};                    
+                    $aa2 = $res_hash{$res_contra}."($res_con)";                    
                 }else{
-                    $aa2 = $aa2."|".$res_hash{$res_contra};
+                    $aa2 = $aa2."|".$res_hash{$res_contra}."($res_con)";
                 }
                 
                 push(@array_res_con, $res_con);
